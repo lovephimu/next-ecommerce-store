@@ -18,11 +18,16 @@ export default function ProductPage({ params }) {
     <main>
       <h1>{singleProduct.name}</h1>
       <Image
+        data-test-id="product-image"
         src={`/images/${singleProduct.name}.png`}
         width={200}
         height={200}
       />
-      this is a {singleProduct.size} carrying a {singleProduct.object}
+      <div>{singleProduct.size}</div>
+      <div data-test-id="product-price">{singleProduct.price}</div>
+      <div data-test-id="product-quantity">Quantity</div>
+      <p>starting quantity should be 1</p>
+      <button data-test-id="product-add-to-cart">Add to cart</button>
     </main>
   );
 }

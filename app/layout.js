@@ -26,7 +26,9 @@ export default function RootLayout({ children }) {
             <Link className={styles.logo} href="/">
               yesTent
             </Link>
-            <Link href="/products">Products</Link>
+            <Link href="/products" data-test-id="products-link">
+              Products
+            </Link>
             <Link href="/cart">Cart:</Link>
             <span>Count</span>
             <Link href="/cart/checkout">Check Out</Link>

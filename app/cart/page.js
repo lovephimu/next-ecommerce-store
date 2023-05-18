@@ -1,3 +1,14 @@
 export default function CartPage() {
-  return <h1>Cart</h1>;
+  return (
+    <>
+      <h1>Cart</h1>
+      <section>
+        <p>Product array map</p>
+        <p>Quantity</p>
+        <p>Remove Button</p>
+      </section>
+      <div data-test-id="cart-total">(Total price number)</div>
+      <button data-test-id="cart-checkout">Checkout</button>
+    </>
+  );
 }
