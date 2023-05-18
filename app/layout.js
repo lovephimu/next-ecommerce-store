@@ -23,7 +23,9 @@ export default function RootLayout({ children }) {
           <div
             className={`${styles.headerBox} ${styles.basicFlex} ${styles.basicFlexAlignCenter}`}
           >
-            <h1 className={styles.logo}>yesTent</h1>
+            <Link className={styles.logo} href="/">
+              yesTent
+            </Link>
             <Link href="/products">Products</Link>
             <Link href="/cart">Cart:</Link>
             <span>Count</span>
