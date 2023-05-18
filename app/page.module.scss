@@ -1,0 +1,40 @@
+// imports
+
+// variables
+
+// -colors
+$backgroundColorBlue: #3b8ea5;
+$textColor: #f2e2d2;
+// -values
+// Background Elements
+
+.headerBox {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 40px;
+}
+
+// Middleground Elements
+
+.basicFlex {
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.basicFlexItem {
+  padding: 16px;
+}
+
+.basicFlexAlignCenter {
+  align-items: center;
+}
+
+// Texts
+
+.logo {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: $textColor;
+}

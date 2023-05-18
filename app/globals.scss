@@ -1,0 +1,23 @@
+// imports
+
+// variables
+
+// -colors
+$backgroundColorBlue: #3b8ea5;
+$textColor: #f2e2d2;
+// -values
+// Background Elements
+
+body {
+  background-color: $backgroundColorBlue;
+  color: $textColor;
+}
+
+// Middleground Elements
+
+// Texts
+
+p {
+  font-size: 1rem;
+  font-weight: 400;
+}
