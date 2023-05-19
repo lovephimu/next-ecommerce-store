@@ -1,13 +1,16 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getProductByName } from '../../../database/products';
+import { getProductById } from '../../../database/products';
 import QuantityButton from './QuantityButton';
+
+type Props = {
+  params: { productId: string };
+};
 
 export const dynamic = 'force-dynamic';
 
-export default function ProductPage({ params }) {
-  const singleProduct = getProductByName(Number(params.productId));
+export default function ProductPage(props: Props) {
+  const singleProduct = getProductById(Number(props.params.productId));
 
   console.log(singleProduct);
 
@@ -23,6 +26,7 @@ export default function ProductPage({ params }) {
         src={`/images/${singleProduct.name}.png`}
         width={200}
         height={200}
+        alt="Product pic"
       />
       <div>{singleProduct.size}</div>
       <div data-test-id="product-price">{singleProduct.price}</div>

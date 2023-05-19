@@ -5,8 +5,8 @@ import styles from './page.module.scss';
 export default function HomePage() {
   return (
     <>
-      <h1 className="logo">Page Content</h1>
-      <p>some smart saying about tents</p>
+      <h1 className="logo">Landing Page</h1>
+      <h2>Because NOtent is not really what you want!</h2>
     </>
   );
 }

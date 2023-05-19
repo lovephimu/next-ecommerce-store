@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { products } from '../../database/products';
+import { getCookie } from '../../util/cookies';
+import { parseJson } from '../../util/json';
 
 export const metadata = {
   title: 'Animals page',
@@ -27,6 +29,7 @@ export default function ProductsPage() {
               src={`/images/${product.name}.png`}
               width={100}
               height={100}
+              alt="Product pic"
             />
           </div>
         );

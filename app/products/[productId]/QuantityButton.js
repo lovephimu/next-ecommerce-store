@@ -3,14 +3,14 @@
 import { useState } from 'react';
 
 export default function QuantityButton() {
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
 
   function increaseQuantity() {
     setQuantity(quantity + 1);
   }
 
   function decreaseQuantity() {
-    if (quantity === 0) {
+    if (quantity <= 0) {
       return;
     }
     setQuantity(quantity - 1);
@@ -28,7 +28,11 @@ export default function QuantityButton() {
       <input
         data-test-id="product-quantity"
         value={quantity}
-        onChange={(event) => setQuantity(event.currentTarget.value)}
+        onChange={(event) => {
+          event.currentTarget.value >= 0
+            ? setQuantity(event.currentTarget.value)
+            : setQuantity(0);
+        }}
       />
       <button
         onClick={() => {
