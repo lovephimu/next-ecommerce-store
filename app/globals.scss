@@ -3,14 +3,16 @@
 // variables
 
 // -colors
-$backgroundColorBlue: #3b8ea5;
-$textColor: #f2e2d2;
+:root {
+  --backgroundColorBlue: #3b8ea5;
+  --textColor: #f2e2d2;
+}
 // -values
 // Background Elements
 
 body {
-  background-color: $backgroundColorBlue;
-  color: $textColor;
+  background-color: var(--backgroundColorBlue);
+  color: var(--textColor);
 }
 
 // Middleground Elements

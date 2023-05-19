@@ -3,8 +3,7 @@
 // variables
 
 // -colors
-$backgroundColorBlue: #3b8ea5;
-$textColor: #f2e2d2;
+
 // -values
 // Background Elements
 
@@ -36,6 +35,6 @@ $textColor: #f2e2d2;
 .logo {
   font-size: 2.5rem;
   font-weight: 900;
-  color: $textColor;
+  color: var(--textColor);
   text-decoration: none;
 }

@@ -2,11 +2,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getProductByName } from '../../../database/products';
+import QuantityButton from './QuantityButton';
 
 export const dynamic = 'force-dynamic';
 
 export default function ProductPage({ params }) {
-  const singleProduct = getProductByName(params.productId);
+  const singleProduct = getProductByName(Number(params.productId));
 
   console.log(singleProduct);
 
@@ -25,7 +26,7 @@ export default function ProductPage({ params }) {
       />
       <div>{singleProduct.size}</div>
       <div data-test-id="product-price">{singleProduct.price}</div>
-      <div data-test-id="product-quantity">Quantity</div>
+      <QuantityButton />
       <p>starting quantity should be 1</p>
       <button data-test-id="product-add-to-cart">Add to cart</button>
     </main>
