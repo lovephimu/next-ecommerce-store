@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { getProductById } from '../../../database/products';
-import QuantityButton from './QuantityButton';
+import QuantityAddButton from './QuantityAddButton';
 
 type Props = {
   params: { productId: string };
@@ -10,6 +10,8 @@ type Props = {
 export const dynamic = 'force-dynamic';
 
 export default function ProductPage(props: Props) {
+  // getProductById gathers basic product info
+
   const singleProduct = getProductById(Number(props.params.productId));
 
   console.log(singleProduct);
@@ -17,6 +19,8 @@ export default function ProductPage(props: Props) {
   if (!singleProduct) {
     notFound();
   }
+
+  // layout for individual product
 
   return (
     <main>
@@ -30,9 +34,8 @@ export default function ProductPage(props: Props) {
       />
       <div>{singleProduct.size}</div>
       <div data-test-id="product-price">{singleProduct.price}</div>
-      <QuantityButton />
+      <QuantityAddButton productId={singleProduct.id} />
       <p>starting quantity should be 1</p>
-      <button data-test-id="product-add-to-cart">Add to cart</button>
     </main>
   );
 }
