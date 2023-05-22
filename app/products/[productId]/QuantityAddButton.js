@@ -2,11 +2,13 @@
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { updateProductQuantity } from './actions';
+import AddToCartButton from './AddToCardButton';
+
+// import { updateProductQuantity } from './actions';
 
 export default function QuantityAddButton(props) {
   const [quantity, setQuantity] = useState(1);
-  const router = useRouter();
+  // const router = useRouter();
 
   function increaseQuantity() {
     setQuantity(quantity + 1);
@@ -46,17 +48,19 @@ export default function QuantityAddButton(props) {
           +
         </button>
       </div>
-      <form>
-        <button
-          data-test-id="product-add-to-cart"
-          formAction={async () => {
-            router.refresh();
-            await updateProductQuantity(props.productId, quantity);
-          }}
-        >
-          Add to cart
-        </button>
-      </form>
+      <AddToCartButton productId={props.productId} quantity={quantity} />
     </>
   );
 }
+
+// <form>
+//   <button
+//     data-test-id="product-add-to-cart"
+//     formAction={async () => {
+//       router.refresh();
+//       await updateProductQuantity(props.productId, quantity);
+//     }}
+//   >
+//     Add to cart
+//   </button>
+// </form>

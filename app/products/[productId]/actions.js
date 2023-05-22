@@ -13,7 +13,7 @@ import { parseJson } from '../../../util/json';
 // AND look for the product to be updated matching the initial ID
 
 export async function updateProductQuantity(productId, quantity) {
-  const productQuantityCookie = getCookie('productQuantity');
+  const productQuantityCookie = getCookie('cart');
   const productQuantity = !productQuantityCookie
     ? []
     : parseJson(productQuantityCookie);
@@ -36,5 +36,18 @@ export async function updateProductQuantity(productId, quantity) {
       totalQuantity: quantity,
     });
   }
-  await cookies().set('productQuantity', JSON.stringify(productQuantity));
+  await cookies().set('cart', JSON.stringify(productQuantity));
+}
+
+export async function deleteProduct(productId) {
+  const productQuantityCookie = getCookie('cart');
+  const productQuantity = !productQuantityCookie
+    ? []
+    : parseJson(productQuantityCookie);
+
+  const newQuantity = productQuantity.filter(
+    (product) => product.id !== productId,
+  );
+
+  await cookies().set('cart', JSON.stringify(newQuantity));
 }
