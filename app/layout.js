@@ -1,6 +1,7 @@
 import './globals.scss';
 import { Lato } from 'next/font/google';
 import Link from 'next/link';
+import Count from './Count';
 import styles from './page.module.scss';
 
 const lato = Lato({
@@ -31,6 +32,7 @@ export default function RootLayout({ children }) {
             </Link>
             <Link href="/cart">Cart:</Link>
             <span>Count</span>
+            <Count />
             <Link href="/cart/checkout">Check Out</Link>
           </div>
         </header>

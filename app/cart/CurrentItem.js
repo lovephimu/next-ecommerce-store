@@ -4,8 +4,11 @@ export default function CurrentItem(props) {
   const currentProduct = getProductById(props.productId);
   return (
     <section>
-      <div>Product: {currentProduct.name}</div>
-      <div>Quantity: {props.quantity}</div>
+      <div className="basicFlex">
+        <div>Product: {currentProduct.name}</div>
+        <div>Quantity: {props.quantity}</div>
+        <div>{currentProduct.price}</div>
+      </div>
     </section>
   );
 }

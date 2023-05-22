@@ -39,6 +39,11 @@ export async function updateProductQuantity(productId, quantity) {
   await cookies().set('cart', JSON.stringify(productQuantity));
 }
 
+// Delete a product from the cart cookie:
+// call deleteProduct and input an ID number
+// this calls a filter that returns everything except
+// the object that matches the input ID
+
 export async function deleteProduct(productId) {
   const productQuantityCookie = getCookie('cart');
   const productQuantity = !productQuantityCookie

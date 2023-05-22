@@ -8,7 +8,6 @@ import {
   updateProductQuantity,
 } from '../products/[productId]/actions';
 import { getCurrentProducts } from './actions';
-import CurrentItem from './CurrentItem';
 
 // I chose an useEffect hook because reading the cookies would return
 // a promise Object - by putting this in an async function
@@ -19,10 +18,13 @@ export default function ListOfCurrentProducts() {
 
   const router = useRouter();
 
+  // Download Cookie Quantity
+  // loads and parses the cart cookie
+  // sets currentProducts state to parsed cookie
+  // in format {id: num, totalQuantity: num}
+
   async function downloadCookieQuantity() {
     const cookieQuantity = await getCurrentProducts();
-    console.log('here we have...' + cookieQuantity);
-    console.log(cookieQuantity[1].id);
     setCurrentProducts(cookieQuantity);
   }
 
@@ -32,45 +34,51 @@ export default function ListOfCurrentProducts() {
 
   return (
     <section>
-      <div>List of your products</div>
-      <div>
+      <h2>List of your products</h2>
+      <div className="basicFlex basicFlexVertical">
         {currentProducts.map((currentProduct) => {
+          const currentProductObject = getProductById(currentProduct.id);
+
           return (
-            <div key={`product-${currentProduct.id}`}>
-              <h1>{currentProduct.id}</h1>
-              <CurrentItem
-                productId={currentProduct.id}
-                quantity={currentProduct.totalQuantity}
-              />
-              <form>
-                <button
-                  formAction={async () => {
-                    await updateProductQuantity(currentProduct.id, 1);
-                    await downloadCookieQuantity();
-                  }}
-                >
-                  +
-                </button>
-                <button
-                  formAction={async () => {
-                    await updateProductQuantity(currentProduct.id, -1);
-                    await downloadCookieQuantity();
-                  }}
-                >
-                  -
-                </button>
-              </form>
-              <form>
-                <button
-                  formAction={async () => {
-                    await deleteProduct(currentProduct.id);
-                    await downloadCookieQuantity();
-                  }}
-                >
-                  RemoveButton
-                </button>
-              </form>
-            </div>
+            <section key={`product-${currentProduct.id}`}>
+              <div className="basicFlex basicFlexNoWrap">
+                <div>#{currentProduct.id}</div>
+                <div className="basicFlex">
+                  <div>Product: {currentProductObject.name}</div>
+                  <div>Quantity: {currentProduct.totalQuantity} Pcs.</div>
+                  <div>{currentProductObject.price}</div>
+                </div>
+                <form className="basicFlex">
+                  <button
+                    formAction={async () => {
+                      await updateProductQuantity(currentProduct.id, 1);
+                      await downloadCookieQuantity();
+                    }}
+                  >
+                    +
+                  </button>
+                  <button
+                    formAction={async () => {
+                      await updateProductQuantity(currentProduct.id, -1);
+                      await downloadCookieQuantity();
+                    }}
+                  >
+                    -
+                  </button>
+                </form>
+                <form className="basicFlex">
+                  <button
+                    formAction={async () => {
+                      await deleteProduct(currentProductObject.id);
+                      await downloadCookieQuantity();
+                    }}
+                  >
+                    RemoveButton
+                  </button>
+                </form>
+                <div>{currentProduct.price}</div>
+              </div>
+            </section>
           );
         })}
       </div>

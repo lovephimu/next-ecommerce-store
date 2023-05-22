@@ -15,7 +15,39 @@ body {
   color: var(--textColor);
 }
 
+form {
+  margin: 0;
+  padding: 0;
+}
+
+section {
+  margin: 0;
+  padding: 0;
+}
+
 // Middleground Elements
+
+.basicFlex {
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.basicFlexVertical {
+  flex-direction: column;
+}
+
+.basicFlexNoWrap {
+  flex-wrap: nowrap;
+}
+
+.basicFlexItem {
+  padding: 16px;
+}
+
+.basicFlexAlignCenter {
+  align-items: center;
+}
 
 // Texts
 
