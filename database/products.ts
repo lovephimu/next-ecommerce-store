@@ -1,55 +1,25 @@
+import { cache } from 'react';
+import { sql } from './connect';
+
 type Product = {
   id: number;
   name: string;
   size: string;
-  description: string;
   price: number;
+  description: string;
 };
 
-const tentDescriptionA = 'a real nice tent';
-const tentDescriptionB = 'a real nice tent';
-const tentDescriptionC = 'a real nice tent';
-const tentDescriptionD = 'a real nice tent';
-const tentDescriptionE = 'a real nice tent';
+export const getProducts = cache(async () => {
+  const products = await sql<Product[]>`
+SELECT * FROM products
+`;
+  return products;
+});
 
-export const products: Product[] = [
-  {
-    id: 1,
-    name: 'tent_a',
-    size: 'verySmall',
-    description: tentDescriptionA,
-    price: 1000,
-  },
-  {
-    id: 2,
-    name: 'tent_b',
-    size: 'small',
-    description: tentDescriptionB,
-    price: 2000,
-  },
-  {
-    id: 3,
-    name: 'tent_c',
-    size: 'medium',
-    description: tentDescriptionC,
-    price: 3000,
-  },
-  {
-    id: 4,
-    name: 'tent_d',
-    size: 'large',
-    description: tentDescriptionD,
-    price: 4000,
-  },
-  {
-    id: 5,
-    name: 'tent_e',
-    size: 'veryLarge',
-    description: tentDescriptionE,
-    price: 5000,
-  },
-];
-
-export function getProductById(id: number) {
-  return products.find((product) => product.id === id);
-}
+export const getProductById = cache(async (id: number) => {
+  const [product] = await sql<Product[]>`
+  SELECT * FROM products
+  WHERE id = ${id}
+  `;
+  return product;
+});

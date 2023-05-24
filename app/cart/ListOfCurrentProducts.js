@@ -59,8 +59,10 @@ export default function ListOfCurrentProducts() {
                   </button>
                   <button
                     formAction={async () => {
-                      await updateProductQuantity(currentProduct.id, -1);
-                      await downloadCookieQuantity();
+                      if (currentProduct.totalQuantity > 1) {
+                        await updateProductQuantity(currentProduct.id, -1);
+                        await downloadCookieQuantity();
+                      }
                     }}
                   >
                     -

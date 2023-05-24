@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getProductById } from '../../../database/products';
 import QuantityAddButton from './QuantityAddButton';
@@ -9,12 +10,10 @@ type Props = {
 
 export const dynamic = 'force-dynamic';
 
-export default function ProductPage(props: Props) {
+export default async function ProductPage(props: Props) {
   // getProductById gathers basic product info
 
-  const singleProduct = getProductById(Number(props.params.productId));
-
-  console.log(singleProduct);
+  const singleProduct = await getProductById(Number(props.params.productId));
 
   if (!singleProduct) {
     notFound();
@@ -24,6 +23,9 @@ export default function ProductPage(props: Props) {
 
   return (
     <main>
+      <p>
+        Return to <Link href={{ pathname: '/products' }}>Products</Link>
+      </p>
       <h1>{singleProduct.name}</h1>
       <Image
         data-test-id="product-image"
@@ -35,7 +37,7 @@ export default function ProductPage(props: Props) {
       <div>{singleProduct.size}</div>
       <div data-test-id="product-price">{singleProduct.price}</div>
       <QuantityAddButton productId={singleProduct.id} />
-      <p>starting quantity should be 1</p>
+      <p>{singleProduct.description}</p>
     </main>
   );
 }

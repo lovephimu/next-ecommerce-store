@@ -11,3 +11,14 @@ export async function getCurrentProducts() {
     : parseJson(productQuantityCookie);
   return productQuantity;
 }
+
+export async function getCurrentQuantity(id) {
+  const productQuantityCookie = await getCookie('cart');
+  const productQuantity = !productQuantityCookie
+    ? []
+    : parseJson(productQuantityCookie);
+
+  const individualProduct = productQuantity.find((item) => item.id === id);
+
+  return individualProduct;
+}

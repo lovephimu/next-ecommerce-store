@@ -1,17 +1,16 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { products } from '../../database/products';
-import { getCookie } from '../../util/cookies';
-import { parseJson } from '../../util/json';
+import { getProducts } from '../../database/products';
 
 export const metadata = {
-  title: 'Animals page',
-  description: 'My favorite animals',
+  title: 'yesTent',
+  description: 'Our Products',
 };
 
 export const dynamic = 'force-dynamic';
 
-export default function ProductsPage() {
+export default async function ProductsPage() {
+  const products = await getProducts();
   return (
     <main>
       Our products:
