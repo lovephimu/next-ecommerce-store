@@ -8,13 +8,13 @@ export default function HomePage() {
       <h1 className="logo">Because notent... </h1>
       <h2>...is not really what you want.</h2>
       <section className="landingSection landingYesHoney">
-        <h2>yesHoney</h2>
+        <h2>Tent 1</h2>
       </section>
       <section className="landingSection landingYassQueen">
-        <h2>yassQueen</h2>
+        <h2>Tent 2</h2>
       </section>
       <section className="landingSection landingYarModular">
-        <h2>yarModular</h2>
+        <h2>Tent 3</h2>
       </section>
     </>
   );

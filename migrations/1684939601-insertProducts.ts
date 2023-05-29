@@ -1,4 +1,5 @@
 import { Sql } from 'postgres';
+import { Product } from './1684938667-createTableProducts';
 
 const tentDescriptionA = 'a real nice tent';
 const tentDescriptionB = 'a real nice tent';
@@ -6,7 +7,7 @@ const tentDescriptionC = 'a real nice tent';
 const tentDescriptionD = 'a real nice tent';
 const tentDescriptionE = 'a real nice tent';
 
-export const products = [
+export const products: Product[] = [
   {
     id: 1,
     name: 'tent_a',

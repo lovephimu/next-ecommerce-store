@@ -12,25 +12,29 @@ export const dynamic = 'force-dynamic';
 export default async function ProductsPage() {
   const products = await getProducts();
   return (
-    <main>
-      Our products:
+    <main className="structureFlex basicFlexVertical">
+      <h1 className="bottomGap">Our products:</h1>
       {products.map((product) => {
         return (
-          <div key={`product-div-${product.id}`}>
-            <Link
-              data-test-id={`product-${product.id}`}
-              href={`/products/${product.id}`}
-            >
-              {product.name}
-            </Link>
-            <br />
-            <Image
-              src={`/images/${product.name}.png`}
-              width={100}
-              height={100}
-              alt="Product pic"
-            />
-          </div>
+          <section
+            key={`product-div-${product.id}`}
+            className="basicFlex cartPaddingGlobal bottomGap"
+          >
+            <div className="basicFlex cartSpaceBetween cartBorder bottomPaddingHalf">
+              <Image
+                src={`/images/${product.name}.png`}
+                width={300}
+                height={300}
+                alt="Product pic"
+              />
+              <Link
+                data-test-id={`product-${product.id}`}
+                href={`/products/${product.id}`}
+              >
+                <h1>{product.name}</h1>
+              </Link>
+            </div>
+          </section>
         );
       })}
     </main>

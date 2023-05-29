@@ -1,5 +1,5 @@
 'use client';
-
+import Image from 'next/image';
 import { useState } from 'react';
 import {
   deleteProduct,
@@ -20,54 +20,64 @@ export default function CurrentItem(props) {
 
   return (
     <section>
-      <div className="structureFlex basicFlexAlignCenter">
-        <div className="basicFlex">
-          <div className="cartItem ">#{props.id}</div>
-          <div className="cartItem basicWidthTwenty">{props.name}</div>
-          <div
-            className="cartItem "
-            data-test-id={`cart-product-quantity-${props.id}`}
-          >
-            {currentQuantity}
+      <div className="structureFlex basicFlexAlignCenter ">
+        <div className="basicFlex cartBorder bottomPaddingHalf bottomGapHalf">
+          <div>
+            <Image
+              src={`/images/${props.name}.png`}
+              alt="Product Pic"
+              width={150}
+              height={150}
+            />
           </div>
-          <div className="cartItem ">à {props.price}€</div>
-        </div>
-        <div className="cartButtonFlex">
-          <form>
-            <button
-              className="cartButton"
-              formAction={async () => {
-                await updateProductQuantity(props.id, 1);
-                await downloadCookieQuantity(props.id);
-              }}
-            >
-              +
-            </button>
-            <button
-              className="cartButton"
-              formAction={async () => {
-                if (props.totalQuantity > 1) {
-                  await updateProductQuantity(props.id, -1);
-                  await downloadCookieQuantity(props.id);
-                }
-              }}
-            >
-              -
-            </button>
-            <button
-              className="cartButton"
-              data-test-id={`cart-product-remove-${props.id}`}
-              formAction={async () => {
-                await deleteProduct(props.id);
-                await downloadCookieQuantity();
-              }}
-            >
-              x
-            </button>
-          </form>
-        </div>
-        <div className="cartItem basicWidthTwenty  basicFlexJustifyContentRight">
-          {props.price * currentQuantity}€
+          <div className="basicFlex cartSpaceBetween">
+            <div className="basicFlex basicFlexVertical">
+              <h3 className="cartItem basicWidthTwenty">{props.name}</h3>
+              <p className="cartItem">
+                <span data-test-id={`cart-product-quantity-${props.id}`}>
+                  {currentQuantity}{' '}
+                </span>
+                <span>à {props.price}€</span>
+              </p>
+              <div className="cartButtonFlex">
+                <form>
+                  <button
+                    className="cartButton"
+                    formAction={async () => {
+                      await updateProductQuantity(props.id, 1);
+                      await downloadCookieQuantity(props.id);
+                    }}
+                  >
+                    +
+                  </button>
+                  <button
+                    className="cartButton"
+                    formAction={async () => {
+                      if (props.totalQuantity > 1) {
+                        await updateProductQuantity(props.id, -1);
+                        await downloadCookieQuantity(props.id);
+                      }
+                    }}
+                  >
+                    -
+                  </button>
+                  <button
+                    className="cartButton"
+                    data-test-id={`cart-product-remove-${props.id}`}
+                    formAction={async () => {
+                      await deleteProduct(props.id);
+                      await downloadCookieQuantity();
+                    }}
+                  >
+                    x
+                  </button>
+                </form>
+              </div>
+            </div>
+            <div className="cartItem basicWidthTwenty  basicFlexJustifyContentRight boldParagraph">
+              {props.price * currentQuantity}€
+            </div>
+          </div>
         </div>
       </div>
     </section>

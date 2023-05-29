@@ -1,0 +1,135 @@
+// imports
+
+// variables
+
+// -colors
+
+// -values
+// Background Elements
+
+.headerBox {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.navSmall {
+  display: none;
+}
+
+// Middleground Elements
+
+.navFlex {
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  justify-content: space-between;
+}
+
+.navFlexItem {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  gap: 16px;
+  height: 32px;
+}
+
+.navFlexAlignCenter {
+  align-items: center;
+}
+
+.navFlexContent {
+  padding: 0 8px 0 8px;
+}
+
+.navList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+// Texts
+
+.logo {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--textColor);
+  text-decoration: none;
+}
+
+.menu {
+  display: flex;
+  justify-content: right;
+  position: relative;
+  min-width: 150px;
+}
+
+.menu ul {
+  list-style: none;
+  padding: 16px;
+  margin: 0;
+  display: none; /* Hide the list by default */
+  position: absolute; /* Position the list absolutely does not influence layout */
+  top: calc(100% + 16px);
+  right: 0px;
+  border-radius: 8px;
+  background-color: #fff;
+  min-width: 150px;
+}
+
+.menu:hover ul,
+.menu ul:hover {
+  display: block; /* Show the list when hovering over the menu or list itself */
+}
+
+.menu:hover::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: calc(16px + 1em); /* Adjust the height as needed */
+}
+
+.menuButton {
+  font-size: 1.5em;
+}
+
+.menu li {
+  padding: 8px;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #444444;
+}
+
+.menu a:hover {
+  color: var(--linkHoverColor);
+}
+
+.menuCart {
+  display: flex;
+  padding: 8px 12px 8px 8px;
+}
+
+.menuCart a {
+  color: var(--textColor);
+}
+
+.menuCart:hover {
+  background-color: var(--linkHoverColor);
+  border-radius: 4px;
+}
+
+@media (max-width: 1080px) {
+  .nav {
+    display: none; /* Hide the entire menu list */
+  }
+
+  .navSmall {
+    display: block;
+  }
+}
