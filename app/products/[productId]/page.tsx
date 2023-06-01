@@ -22,22 +22,28 @@ export default async function ProductPage(props: Props) {
   // layout for individual product
 
   return (
-    <main>
-      <p>
-        Return to <Link href={{ pathname: '/products' }}>Products</Link>
-      </p>
-      <h1>{singleProduct.name}</h1>
-      <Image
-        data-test-id="product-image"
-        src={`/images/${singleProduct.name}.png`}
-        width={200}
-        height={200}
-        alt="Product pic"
-      />
-      <div>{singleProduct.size}</div>
-      <div data-test-id="product-price">{singleProduct.price}</div>
-      <QuantityAddButton productId={singleProduct.id} />
-      <p>{singleProduct.description}</p>
+    <main className="structureFlex ">
+      <div className="basicFlex cartPaddingGlobal basicFlexVertical">
+        <p className="productNav bottomGap">
+          <Link href={{ pathname: '/products' }}>⬅ Return to Products</Link>
+        </p>
+        <h1 className="productTitle bottomGap">{singleProduct.name}</h1>
+        <Image
+          data-test-id="product-image"
+          className="productImage"
+          src={`/images/${singleProduct.name}_product.png`}
+          width={200}
+          height={200}
+          alt="Product pic"
+        />
+        <div>{singleProduct.size}</div>
+        <p className="bottomGap">{singleProduct.description}</p>
+
+        <QuantityAddButton
+          productId={Number(singleProduct.id)}
+          productPrice={singleProduct.price}
+        />
+      </div>
     </main>
   );
 }

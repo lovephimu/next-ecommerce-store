@@ -5,8 +5,12 @@ export const rootNotFoundMetadata = {
 
 export default function RootNotFound() {
   return (
-    <div>
-      Sorry this page was not found make sure you visit a page that exists
-    </div>
+    <main className="structureFlex">
+      <section className="basicFlex basicFlexJustifyCenter cartPaddingGlobal">
+        <div>
+          Sorry this page was not found make sure you visit a page that exists.
+        </div>
+      </section>
+    </main>
   );
 }

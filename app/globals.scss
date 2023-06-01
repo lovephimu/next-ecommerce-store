@@ -14,7 +14,8 @@
 
   --landingSectionHeight: 400px;
   --globalMargin: 40px;
-  --cartDetailPadding: 8px;
+  --cartDetailPadding: 12px;
+  --productButtonSize: 50px;
 
   --linkHoverColor: #ed6a5a;
 }
@@ -60,14 +61,22 @@ header {
 
 .landingYesHoney {
   background-color: var(--backgroundColorYes);
+  background-image: url('/images/yesHoney.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 600px;
+  max-height: 700px;
+  max-width: 1000px;
+  overflow: hidden;
+  background-position: center;
 }
 
-.landingYassQueen {
-  background-color: var(--backgroundColorYass);
+.landingYesChillax {
+  background-image: url('/images/yesChillax.png');
 }
 
-.landingYarModular {
-  background-color: var(--backgroundColorYar);
+.landingYesRave {
+  background-image: url('/images/yesRave.png');
 }
 .content {
   flex: 1;
@@ -117,6 +126,10 @@ header {
   justify-content: center;
 }
 
+.basicGap {
+  gap: 16px;
+}
+
 .cartButtonFlex {
   display: flex;
   flex-wrap: nowrap;
@@ -131,6 +144,7 @@ header {
   height: 2em;
   border: none;
   margin-left: 1px;
+  border-radius: 4px;
   background-color: var(--backgroundColorGrey);
   transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -149,7 +163,7 @@ header {
 }
 
 .cartItem {
-  padding: var(--cartDetailPadding);
+  padding: var(--cartDetailPadding) 0 var(--cartDetailPadding) 16px;
 }
 
 .cartPaddingGlobal {
@@ -164,7 +178,83 @@ header {
   justify-content: space-between;
 }
 
+.input {
+  width: 50%;
+  height: 2.5em;
+  border-radius: none;
+  border: none;
+  background-color: var(--backgroundColorYes);
+  padding-left: 4px;
+  color: var(--textColor);
+  border-bottom: var(--backgroundColorYass) 1px solid;
+}
+
+.input:focus {
+  outline: none;
+  border-bottom: var(--backgroundColorGrey) 1px solid;
+}
+
+.input:first-of-type {
+  margin-right: 4px;
+}
+.input::placeholder {
+  color: var(--backgroundColorYass);
+}
+
+.cardNumberInput {
+  width: 100%;
+}
+
+.productInput {
+  text-align: center;
+  height: var(--productButtonSize);
+  width: var(--productButtonSize);
+  border-radius: none;
+  background-color: var(--backgroundColorYes);
+  color: var(--textColor);
+  border: var(--backgroundColorYass) 1px solid;
+  box-sizing: border-box;
+}
+
+.productButton {
+  width: var(--productButtonSize);
+  height: var(--productButtonSize);
+  border-radius: none;
+  padding: none;
+  margin: none;
+  background-color: var(--backgroundColorYes);
+  color: var(--textColor);
+  border: var(--backgroundColorYass) 1px solid;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-weight: 700;
+}
+
+.productButton:hover {
+  background-color: var(--linkHoverColor);
+  color: var(--textColor);
+}
+
+.productButton:focus {
+  outline: none;
+  border-bottom: var(--backgroundColorGrey) 1px solid;
+}
+
+.labelInput {
+  width: 50%;
+}
+
+.labelInput:first-of-type {
+  margin-right: 4px;
+}
+
 // Texts
+
+a {
+  color: var(--backgroundColorFooter);
+  z-index: 1;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+}
 
 li {
   text-decoration: none;
@@ -173,6 +263,11 @@ li {
 p {
   font-size: 1rem;
   font-weight: 400;
+}
+
+.flowText {
+  line-height: 1.5;
+  font-weight: 200;
 }
 
 .pTitle {
@@ -201,7 +296,6 @@ p {
 
 h1,
 h2 {
-  margin-left: var(--globalMargin);
   padding-top: var(--globalMargin);
 }
 
@@ -209,8 +303,32 @@ h3 {
   font-size: 1.5rem;
 }
 
+.topPadding {
+  padding-top: var(--globalMargin);
+}
+
 footer {
   flex-shrink: 0;
   padding: var(--globalMargin) 0 var(--globalMargin) var(--globalMargin);
   background-color: var(--backgroundColorFooter);
+}
+
+.productNav {
+  font-weight: 200;
+}
+
+.productTitle {
+  position: absolute;
+  z-index: -1;
+}
+
+.productImage {
+  width: 100%;
+  height: auto;
+  max-width: 600px;
+  z-index: -2;
+}
+
+.alignCenter {
+  text-align: center;
 }

@@ -13,7 +13,7 @@ export default async function ProductsPage() {
   const products = await getProducts();
   return (
     <main className="structureFlex basicFlexVertical">
-      <h1 className="bottomGap">Our products:</h1>
+      <h1 className="bottomGap cartPaddingGlobal">Our products:</h1>
       {products.map((product) => {
         return (
           <section
@@ -22,7 +22,7 @@ export default async function ProductsPage() {
           >
             <div className="basicFlex cartSpaceBetween cartBorder bottomPaddingHalf">
               <Image
-                src={`/images/${product.name}.png`}
+                src={`/images/${product.name}_product.png`}
                 width={300}
                 height={300}
                 alt="Product pic"

@@ -2,7 +2,7 @@ import './globals.scss';
 import { Lato } from 'next/font/google';
 import Image from 'next/image';
 import Link from 'next/link';
-import IconCart from '../public/images/Icon_Cart.js';
+import { PropsWithChildren } from 'react';
 import Count from './Count';
 import styles from './layout.module.scss';
 
@@ -18,7 +18,7 @@ export const metadata = {
   description: 'Our Products',
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
       <body className={`${lato.className} bodyWrap`}>
@@ -29,13 +29,13 @@ export default function RootLayout({ children }) {
             <Link className={styles.logo} href="/">
               yesTent
             </Link>
-            <Link href="/products" data-test-id="products-link">
+            <Link href={{ pathname: '/products' }} data-test-id="products-link">
               Products
             </Link>
-            <Link href="/cart">Cart:</Link>
+            <Link href={{ pathname: '/cart' }}>Cart:</Link>
             <span>Count</span>
             <Count />
-            <Link href="/cart/checkout">Check Out</Link>
+            <Link href={{ pathname: '/cart/checkout' }}>Check Out</Link>
           </nav>
           <nav className={`${styles.headerBox} ${styles.navSmall}`}>
             <div className={`${styles.navFlex} ${styles.navFlexAlignCenter}`}>
@@ -47,17 +47,23 @@ export default function RootLayout({ children }) {
                   <span className={styles.menuButton}>Menu</span>
                   <ul className={styles.navList}>
                     <li>
-                      <Link href="/products" data-test-id="products-link">
+                      <Link
+                        href={{ pathname: '/products' }}
+                        data-test-id="products-link"
+                      >
                         Products
                       </Link>
                     </li>
                     <li>
-                      <Link href="/about">About</Link>
+                      <Link href={{ pathname: '/about' }}>About</Link>
                     </li>
                   </ul>
                 </div>
                 <div className={styles.menuCart}>
-                  <Link href="/cart" className={styles.menuCart}>
+                  <Link
+                    href={{ pathname: '/cart' }}
+                    className={styles.menuCart}
+                  >
                     <Image
                       src="/images/Icon_Cart.svg"
                       width={32}
@@ -72,7 +78,7 @@ export default function RootLayout({ children }) {
           </nav>
         </header>
         <main className="content">{children}</main>
-        <footer className={styles.footer}>some footer</footer>
+        <footer>© yesTent</footer>
       </body>
     </html>
   );

@@ -38,7 +38,7 @@ export default async function CartPage() {
   if (productQuantity.length === 0) {
     return (
       <section>
-        <h1>Cart</h1>
+        <h1 className="bottomGap cartPaddingGlobal">Cart</h1>
         <div className="basicFlex basicFlexVertical basicFlexAlignCenter">
           <p>Your cart is empty! </p>
           <p>Pro-tip: add a yesTent 😉</p>
@@ -52,7 +52,7 @@ export default async function CartPage() {
   } else {
     return (
       <main className="structureFlex basicFlexVertical">
-        <h1 className="bottomGap">Cart</h1>
+        <h1 className="bottomGap cartPaddingGlobal">Cart</h1>
         <section className="basicFlex cartPaddingGlobal basicFlexVertical bottomGapHalf">
           {productsInCart.map((productInCart) => {
             return (
@@ -63,8 +63,6 @@ export default async function CartPage() {
                 <CurrentItem
                   id={productInCart.id}
                   name={productInCart.name}
-                  size={productInCart.size}
-                  description={productInCart.description}
                   price={productInCart.price}
                   totalQuantity={productInCart.totalQuantity}
                 />

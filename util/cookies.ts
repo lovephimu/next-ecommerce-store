@@ -5,6 +5,6 @@ import { cookies } from 'next/headers';
 // It checks if the value returned by cookies().get(name) is not null or undefined.
 // If it is, the expression short-circuits and returns undefined.
 
-export function getCookie(name) {
+export function getCookie(name: string) {
   return cookies().get(name)?.value;
 }

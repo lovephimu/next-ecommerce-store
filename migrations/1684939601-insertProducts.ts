@@ -5,43 +5,35 @@ const tentDescriptionA = 'a real nice tent';
 const tentDescriptionB = 'a real nice tent';
 const tentDescriptionC = 'a real nice tent';
 const tentDescriptionD = 'a real nice tent';
-const tentDescriptionE = 'a real nice tent';
 
 export const products: Product[] = [
   {
     id: 1,
-    name: 'tent_a',
+    name: 'yesChillax',
     size: 'verySmall',
     price: 1000,
     description: tentDescriptionA,
   },
   {
     id: 2,
-    name: 'tent_b',
+    name: 'yesHoney',
     size: 'small',
     price: 2000,
     description: tentDescriptionB,
   },
   {
     id: 3,
-    name: 'tent_c',
+    name: 'yesRave',
     size: 'medium',
     price: 3000,
     description: tentDescriptionC,
   },
   {
     id: 4,
-    name: 'tent_d',
+    name: 'yesCat',
     size: 'large',
-    price: 4000,
+    price: 500,
     description: tentDescriptionD,
-  },
-  {
-    id: 5,
-    name: 'tent_e',
-    size: 'veryLarge',
-    price: 5000,
-    description: tentDescriptionE,
   },
 ];
 

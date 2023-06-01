@@ -7,13 +7,20 @@ import {
 } from '../products/[productId]/actions';
 import { getCurrentQuantity } from './actions';
 
-export default function CurrentItem(props) {
+type Props = {
+  id: number;
+  name: string;
+  price: number;
+  totalQuantity: number;
+};
+
+export default function CurrentItem(props: Props) {
   const [currentQuantity, setCurrentQuantity] = useState(props.totalQuantity);
 
   // change function so it only returns one
   //
 
-  async function downloadCookieQuantity(id) {
+  async function downloadCookieQuantity(id: number) {
     const cookieQuantity = await getCurrentQuantity(id);
     setCurrentQuantity(cookieQuantity.totalQuantity);
   }
@@ -24,7 +31,7 @@ export default function CurrentItem(props) {
         <div className="basicFlex cartBorder bottomPaddingHalf bottomGapHalf">
           <div>
             <Image
-              src={`/images/${props.name}.png`}
+              src={`/images/${props.name}_product.png`}
               alt="Product Pic"
               width={150}
               height={150}
@@ -35,8 +42,9 @@ export default function CurrentItem(props) {
               <h3 className="cartItem basicWidthTwenty">{props.name}</h3>
               <p className="cartItem">
                 <span data-test-id={`cart-product-quantity-${props.id}`}>
-                  {currentQuantity}{' '}
+                  {currentQuantity}
                 </span>
+                <span> </span>
                 <span>à {props.price}€</span>
               </p>
               <div className="cartButtonFlex">
@@ -66,7 +74,6 @@ export default function CurrentItem(props) {
                     data-test-id={`cart-product-remove-${props.id}`}
                     formAction={async () => {
                       await deleteProduct(props.id);
-                      await downloadCookieQuantity();
                     }}
                   >
                     x

@@ -113,6 +113,9 @@
 .menuCart {
   display: flex;
   padding: 8px 12px 8px 8px;
+  background-color: #ed6b5a00;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 4px;
 }
 
 .menuCart a {
@@ -121,10 +124,9 @@
 
 .menuCart:hover {
   background-color: var(--linkHoverColor);
-  border-radius: 4px;
 }
 
-@media (max-width: 1080px) {
+@media (max-width: 700px) {
   .nav {
     display: none; /* Hide the entire menu list */
   }

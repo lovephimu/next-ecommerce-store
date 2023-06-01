@@ -1,6 +1,5 @@
 'use server';
 
-// import { cookies } from 'next/headers';
 import { getCookie } from '../../util/cookies';
 import { parseJson } from '../../util/json';
 
@@ -12,13 +11,15 @@ export async function getCurrentProducts() {
   return productQuantity;
 }
 
-export async function getCurrentQuantity(id) {
+export async function getCurrentQuantity(id: number) {
   const productQuantityCookie = await getCookie('cart');
   const productQuantity = !productQuantityCookie
     ? []
     : parseJson(productQuantityCookie);
 
-  const individualProduct = productQuantity.find((item) => item.id === id);
+  const individualProduct = productQuantity?.find(
+    (item: { id: number; totalQuantity: number }) => item.id === id,
+  );
 
   return individualProduct;
 }
