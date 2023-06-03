@@ -1,7 +1,9 @@
 'use client';
 
-import { ChangeEvent, useState } from 'react';
-import CheckOutButton from './CheckOutButton';
+import { useRouter } from 'next/navigation';
+import { ChangeEvent, useEffect, useState } from 'react';
+
+// import CheckOutButton from './CheckOutButton';
 
 export default function CheckOutForm() {
   const [firstName, setFirstName] = useState('');
@@ -14,6 +16,56 @@ export default function CheckOutForm() {
   const [creditCard, setCreditCard] = useState('');
   const [expirationDate, setExpirationDate] = useState('');
   const [securityCode, setSecurityCode] = useState('');
+  const [activeButton, setActiveButton] = useState(true);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (
+      firstName &&
+      lastName &&
+      email &&
+      address &&
+      city &&
+      postalCode &&
+      country &&
+      creditCard &&
+      expirationDate &&
+      securityCode
+    ) {
+      setActiveButton(false);
+    }
+  }, [
+    firstName,
+    lastName,
+    email,
+    address,
+    city,
+    postalCode,
+    country,
+    creditCard,
+    expirationDate,
+    securityCode,
+  ]);
+
+  // [firstName][lastName][email][address][city][postalCode][country][creditCard][expirationDate][securityCode])
+
+  // function checkStates() {
+  //   if (
+  //     firstName &&
+  //     lastName &&
+  //     email &&
+  //     address &&
+  //     city &&
+  //     postalCode &&
+  //     country &&
+  //     creditCard &&
+  //     expirationDate &&
+  //     securityCode
+  //   ) {
+  //     setActiveButton(false);
+  //   }
+  // }
 
   return (
     <main className="structureFlex">
@@ -175,16 +227,17 @@ export default function CheckOutForm() {
             />
           </div>
         </section>
-        <CheckOutButton />
-        {/* <section className="basicFlex bottomGap">
-          <a
-            href="/cart/checkout/thankyou"
+        <section className="basicFlex bottomGap">
+          <button
+            type="button"
+            disabled={activeButton}
             className="basicFlex basicFlexJustifyCenter basicFlexAlignCenter cartButton checkOut"
             data-test-id="checkout-confirm-order"
+            onClick={() => router.push('/cart/checkout/thankyou')}
           >
             Confirm order
-          </a>
-        </section> */}
+          </button>
+        </section>
       </form>
     </main>
   );

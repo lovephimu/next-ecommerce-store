@@ -2,16 +2,21 @@
 
 import { useRouter } from 'next/navigation';
 
-export default function CheckOutButton() {
+type Props = {
+  activated: boolean;
+};
+
+export default function CheckOutButton(props: Props) {
   const router = useRouter();
 
   return (
     <section className="basicFlex bottomGap">
       <button
-        // type="button"
+        type="button"
+        disabled={props.activated}
         className="basicFlex basicFlexJustifyCenter basicFlexAlignCenter cartButton checkOut"
         data-test-id="checkout-confirm-order"
-        onClick={() => router.push('/cart/checkout')}
+        onClick={() => router.push('/cart/checkout/thankyou')}
       >
         Confirm order
       </button>

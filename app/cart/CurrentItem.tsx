@@ -37,10 +37,17 @@ export default function CurrentItem(props: Props) {
               height={150}
             />
           </div>
-          <div className="basicFlex cartSpaceBetween">
-            <div className="basicFlex basicFlexVertical">
-              <h3 className="cartItem basicWidthTwenty">{props.name}</h3>
-              <p className="cartItem">
+          <div className="justFlex justWidth cartSpaceBetween basicFlexVertical cartItem">
+            <div>
+              <div className="justFlex justWidth cartSpaceBetween justBottomBorder bottomGapHalf">
+                <h3 className="justFlex  basicWidthTwenty basicAlignBottom">
+                  {props.name}
+                </h3>
+                <div className="justFlex    basicFlexJustifyContentRight boldParagraph basicAlignBottom">
+                  {props.price * currentQuantity}€
+                </div>
+              </div>
+              <p className="">
                 <span data-test-id={`cart-product-quantity-${props.id}`}>
                   {currentQuantity}
                 </span>
@@ -80,9 +87,6 @@ export default function CurrentItem(props: Props) {
                   </button>
                 </form>
               </div>
-            </div>
-            <div className="cartItem basicWidthTwenty  basicFlexJustifyContentRight boldParagraph">
-              {props.price * currentQuantity}€
             </div>
           </div>
         </div>

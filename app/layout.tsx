@@ -26,16 +26,30 @@ export default function RootLayout({ children }: PropsWithChildren) {
           <nav
             className={`${styles.headerBox} ${styles.navFlex} ${styles.navFlexAlignCenter} ${styles.nav}`}
           >
-            <Link className={styles.logo} href="/">
-              yesTent
-            </Link>
-            <Link href={{ pathname: '/products' }} data-test-id="products-link">
-              Products
-            </Link>
-            <Link href={{ pathname: '/cart' }}>Cart:</Link>
-            <span>Count</span>
-            <Count />
-            <Link href={{ pathname: '/cart/checkout' }}>Check Out</Link>
+            <div className="contentFlex">
+              <Link className={styles.logo} href="/">
+                yesTent
+              </Link>
+            </div>
+            <div className="contentFlex">
+              <Link
+                href={{ pathname: '/products' }}
+                data-test-id="products-link"
+              >
+                Products
+              </Link>
+              <div className={styles.menuCart}>
+                <Link href={{ pathname: '/cart' }} className={styles.menuCart}>
+                  <Image
+                    src="/images/Icon_Cart.svg"
+                    width={32}
+                    height={32}
+                    alt="cart svg"
+                  />
+                  <Count />
+                </Link>
+              </div>
+            </div>
           </nav>
           <nav className={`${styles.headerBox} ${styles.navSmall}`}>
             <div className={`${styles.navFlex} ${styles.navFlexAlignCenter}`}>

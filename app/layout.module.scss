@@ -10,9 +10,7 @@
 .headerBox {
   display: flex;
   justify-content: space-between;
-  flex-wrap: nowrap;
   width: 100%;
-  box-sizing: border-box;
 }
 
 .navSmall {
@@ -133,5 +131,15 @@
 
   .navSmall {
     display: block;
+  }
+}
+
+@media (min-width: 701px) {
+  .navFlex {
+    max-width: 100%;
+    flex-shrink: 0;
+  }
+  .nav {
+    width: 100%;
   }
 }

@@ -12,7 +12,7 @@
   --backgroundColorFooter: #0e3641;
   --backgroundColorGrey: #efefef;
 
-  --landingSectionHeight: 400px;
+  --landingSectionHeight: 800px;
   --globalMargin: 40px;
   --cartDetailPadding: 12px;
   --productButtonSize: 50px;
@@ -37,6 +37,7 @@ body {
 .bodyWrap {
   display: flex;
   min-height: 100vh;
+  width: 100%;
   flex-direction: column;
 }
 
@@ -66,7 +67,7 @@ header {
   background-repeat: no-repeat;
   min-height: 600px;
   max-height: 700px;
-  max-width: 1000px;
+  max-width: 100%;
   overflow: hidden;
   background-position: center;
 }
@@ -117,6 +118,10 @@ header {
   align-items: center;
 }
 
+.basicAlignBottom {
+  align-items: bottom;
+}
+
 .basicFlexJustifyContentRight {
   justify-content: right;
   text-align: right;
@@ -130,18 +135,35 @@ header {
   gap: 16px;
 }
 
+.contentFlex {
+  display: flex;
+  align-items: center;
+}
+
+.justFlex {
+  display: flex;
+}
+
+.justWidth {
+  width: 100%;
+}
+
+.justBottomBorder {
+  border-bottom: 1px var(--backgroundColorYar) dotted;
+}
+
 .cartButtonFlex {
   display: flex;
   flex-wrap: nowrap;
   box-sizing: border-box;
   align-items: center;
   flex-grow: auto;
-  padding: var(--cartDetailPadding);
+  padding-top: var(--cartDetailPadding);
 }
 
 .cartButton {
-  width: 2em;
-  height: 2em;
+  width: 3em;
+  height: 3em;
   border: none;
   margin-left: 1px;
   border-radius: 4px;
@@ -271,7 +293,7 @@ p {
 }
 
 .pTitle {
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 .boldParagraph {
@@ -303,13 +325,25 @@ h3 {
   font-size: 1.5rem;
 }
 
+.landingTitle {
+  font-size: 2.5em;
+}
+
+.positionTitle {
+  position: relative;
+  top: 65%;
+  padding-left: var(--globalMargin);
+  text-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+}
+
 .topPadding {
   padding-top: var(--globalMargin);
 }
 
 footer {
   flex-shrink: 0;
-  padding: var(--globalMargin) 0 var(--globalMargin) var(--globalMargin);
+  padding: var(--globalMargin);
+  box-sizing: border-box;
   background-color: var(--backgroundColorFooter);
 }
 
@@ -331,4 +365,46 @@ footer {
 
 .alignCenter {
   text-align: center;
+}
+
+@media (min-width: 701px) {
+  .bodyWrap {
+    width: 100%;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  html {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+
+  header {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 var(--globalMargin) 0 var(--globalMargin);
+  }
+
+  .content {
+    width: 100%;
+  }
+
+  .structureFlex {
+    width: 100%;
+    flex-shrink: 0;
+  }
+
+  .basicFlex {
+    flex-shrink: 0;
+  }
+
+  footer {
+    width: 100%;
+  }
+
+  .landingYesHoney {
+    min-height: 1000px;
+    max-height: none;
+  }
 }
