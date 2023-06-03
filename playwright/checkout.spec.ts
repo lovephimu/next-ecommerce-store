@@ -1,10 +1,15 @@
 import { expect, test } from '@playwright/test';
 
 test('checkout flow test', async ({ page }) => {
-  await expect(page.getByTestId('checkout-confirm-order')).toHaveAttribute(
-    '{disabled}',
-    '{true}',
+  await page.goto('http://localhost:3000/cart/checkout');
+
+  await expect(page.getByTestId('checkout-confirm-order')).toHaveText(
+    'Confirm order',
   );
+
+  const buttonSelector = '[data-test-id="checkout-confirm-order"]';
+  await page.dispatchEvent(buttonSelector, 'click');
+
   await expect(page).not.toHaveURL(
     'http://localhost:3000/cart/checkout/thankyou',
   );
