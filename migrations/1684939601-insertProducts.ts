@@ -1,5 +1,5 @@
 import { Sql } from 'postgres';
-import { Product } from './1684938667-createTableProducts';
+import { Product } from '../database/products';
 
 const tentDescriptionA = 'a real nice tent';
 const tentDescriptionB = 'a real nice tent';

@@ -152,6 +152,10 @@ header {
   border-bottom: 1px var(--backgroundColorYar) dotted;
 }
 
+.widthWideMode {
+  width: 100%;
+}
+
 .cartButtonFlex {
   display: flex;
   flex-wrap: nowrap;
@@ -406,5 +410,9 @@ footer {
   .landingYesHoney {
     min-height: 1000px;
     max-height: none;
+  }
+
+  .widthWideMode {
+    width: 1000px;
   }
 }
