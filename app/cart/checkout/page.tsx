@@ -4,6 +4,11 @@ import CheckOutForm from './CheckOutForm';
 
 export const dynamic = 'force-dynamic';
 
+export const metadata = {
+  title: 'yesTent - check out',
+  description: 'Check out',
+};
+
 export default async function CheckOutPage() {
   type ParsedCookie = {
     id: number;

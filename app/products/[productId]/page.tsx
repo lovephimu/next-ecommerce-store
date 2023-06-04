@@ -10,6 +10,11 @@ type Props = {
 
 export const dynamic = 'force-dynamic';
 
+export const metadata = {
+  title: 'yesTent - product page',
+  description: 'Our Products',
+};
+
 export default async function ProductPage(props: Props) {
   // getProductById gathers basic product info
 

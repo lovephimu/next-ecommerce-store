@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { getProducts } from '../../database/products';
 
 export const metadata = {
-  title: 'yesTent',
+  title: 'yesTent - products',
   description: 'Our Products',
 };
 

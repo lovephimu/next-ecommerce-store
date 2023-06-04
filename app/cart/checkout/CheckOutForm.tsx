@@ -233,7 +233,10 @@ export default function CheckOutForm() {
             data-test-id="checkout-confirm-order"
             disabled={activeButton}
             className="basicFlex basicFlexJustifyCenter basicFlexAlignCenter cartButton checkOut"
-            onClick={() => router.push('/cart/checkout/thankyou')}
+            onClick={() => {
+              router.push('/cart/checkout/thankyou');
+              router.refresh();
+            }}
           >
             Confirm order
           </button>
