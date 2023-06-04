@@ -1,7 +1,7 @@
 import { config } from 'dotenv-safe';
 import postgres from 'postgres';
 
-config();
+if (!process.env.FLY_IO) config();
 
 // Making a simple connection to Postgres
 // Next.js fast refresh increases database connection slot
