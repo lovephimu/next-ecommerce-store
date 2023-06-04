@@ -3,7 +3,9 @@ import { getProductById } from '../../database/products';
 import { getCurrentProducts } from './actions';
 import CurrentItem from './CurrentItem';
 
-type ParsedCookie = {
+export const dynamic = 'force-dynamic';
+
+export type ParsedCookie = {
   id: number;
   totalQuantity: number;
 };
@@ -16,8 +18,6 @@ export type ProductWithQuantity = {
   description: string;
   totalQuantity: number;
 };
-
-// : Promise<ProductWithQuantity[]> optional return type for function combineProductQuantity
 
 export async function combineProductQuantity(
   parsedProductCookies: ParsedCookie[],

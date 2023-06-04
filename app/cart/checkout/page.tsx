@@ -2,6 +2,8 @@ import { getNamePriceById } from '../../../database/products';
 import { getCurrentProducts } from '../actions';
 import CheckOutForm from './CheckOutForm';
 
+export const dynamic = 'force-dynamic';
+
 export default async function CheckOutPage() {
   type ParsedCookie = {
     id: number;
