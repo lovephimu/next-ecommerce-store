@@ -1,19 +1,22 @@
-import { ParsedCookie } from '../app/cart/page';
+import { ParsedCookie, ProductWithQuantity } from '../app/cart/page';
 import { Product } from '../database/products';
 
 export function combineData(
   products: Product[],
   productsInCookie: ParsedCookie[],
-) {
-  const combinedProducts = products
-    .map((product: Product) => {
-      const matchingProduct = productsInCookie.find(
-        (cookieProduct: ParsedCookie) => product.id === cookieProduct.id,
+): ProductWithQuantity[] {
+  const combinedProducts: ProductWithQuantity[] = productsInCookie.map(
+    (productInCookie: ParsedCookie): ProductWithQuantity => {
+      const matchingProduct = products.find(
+        (product: Product) => product.id === productInCookie.id,
       );
 
-      return { ...product, totalQuantity: matchingProduct?.totalQuantity };
-    })
-    .filter((product) => product.totalQuantity !== undefined);
+      return {
+        ...matchingProduct!,
+        totalQuantity: productInCookie.totalQuantity,
+      };
+    },
+  );
 
   return combinedProducts;
 }

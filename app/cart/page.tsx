@@ -18,12 +18,12 @@ export type ParsedCookie = {
 };
 
 export type ProductWithQuantity = {
-  id: number | undefined;
+  id: number;
   name: string;
   size: string;
   price: number;
   description: string | null;
-  totalQuantity: number | undefined;
+  totalQuantity: number;
 };
 
 export default async function CartPage() {
