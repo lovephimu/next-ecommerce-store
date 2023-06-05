@@ -11,7 +11,7 @@ type Props = {
 export const dynamic = 'force-dynamic';
 
 export const metadata = {
-  title: 'yesTent - product page',
+  title: 'yesTent - product',
   description: 'Our Products',
 };
 
@@ -28,7 +28,7 @@ export default async function ProductPage(props: Props) {
 
   return (
     <main className="structureFlex ">
-      <div className="basicFlex cartPaddingGlobal basicFlexVertical">
+      <div className="contentFlex cartPaddingGlobal productFlexDirection widthWideMode">
         <p className="productNav bottomGap">
           <Link href={{ pathname: '/products' }}>⬅ Return to Products</Link>
         </p>

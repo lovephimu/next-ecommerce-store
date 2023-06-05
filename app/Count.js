@@ -10,5 +10,5 @@ export default function Count() {
     );
   }
 
-  return <p>{showProductAmount()}</p>;
+  return <p data-test-id="cart-count">{showProductAmount()}</p>;
 }

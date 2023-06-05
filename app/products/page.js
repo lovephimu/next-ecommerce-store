@@ -33,6 +33,7 @@ export default async function ProductsPage() {
               >
                 <h1>{product.name}</h1>
               </Link>
+              <p>short description</p>
             </div>
           </section>
         );

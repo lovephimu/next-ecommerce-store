@@ -1,5 +1,7 @@
 import Link from 'next/link';
-import { getProductById } from '../../database/products';
+import { getProducts } from '../../database/products';
+import { combineData } from '../../functions/combineData';
+import { totalSum } from '../../functions/totalsum';
 import { getCurrentProducts } from './actions';
 import CurrentItem from './CurrentItem';
 
@@ -16,81 +18,21 @@ export type ParsedCookie = {
 };
 
 export type ProductWithQuantity = {
-  id: number;
+  id: number | undefined;
   name: string;
   size: string;
   price: number;
-  description: string;
-  totalQuantity: number;
+  description: string | null;
+  totalQuantity: number | undefined;
 };
-
-export async function combineProductQuantity(
-  parsedProductCookies: ParsedCookie[],
-): Promise<ProductWithQuantity[] | undefined> {
-  const combinedProducts = await Promise.all(
-    parsedProductCookies.map(async (parsedProductCookie: ParsedCookie) => {
-      const matchingProduct = await getProductById(
-        Number(parsedProductCookie.id),
-      );
-
-      const productWithQuantity: ProductWithQuantity = {
-        id: matchingProduct?.id || 0,
-        name: matchingProduct?.name || '',
-        size: matchingProduct?.size || '',
-        price: matchingProduct?.price || 0,
-        description: matchingProduct?.description || '',
-        totalQuantity: parsedProductCookie.totalQuantity || 0,
-      };
-
-      return productWithQuantity;
-    }),
-  );
-
-  if (combinedProducts.length === 0) {
-    return undefined;
-  }
-
-  return combinedProducts;
-}
-
-export function calculateTotal(
-  productObjectArray: ProductWithQuantity[] | undefined,
-) {
-  const products = productObjectArray || [];
-  return products.reduce(
-    (total, item) => total + item.totalQuantity * item.price,
-    0,
-  );
-}
 
 export default async function CartPage() {
   // load cookie content
+
+  const products = await getProducts();
   const productQuantity = await getCurrentProducts();
 
-  const productsInCart = await combineProductQuantity(productQuantity);
-
-  // map according to items in cookie
-  // use Promise.all in order resolve all database requests
-
-  // const productsInCart = await Promise.all(
-  //   productQuantity.map(async (parsedCookieProduct: ParsedCookie) => {
-  //     const matchingProduct = await getProductById(
-  //       Number(parsedCookieProduct.id),
-  //     );
-
-  //     return {
-  //       ...matchingProduct,
-  //       totalQuantity: parsedCookieProduct.totalQuantity,
-  //     };
-  //   }),
-  // );
-
-  // function calculateTotal() {
-  //   return productsInCart.reduce(
-  //     (total, item) => total + item.totalQuantity * item.price,
-  //     0,
-  //   );
-  // }
+  const productsInCart = combineData(products, productQuantity);
 
   if (productQuantity.length === 0) {
     return (
@@ -111,17 +53,17 @@ export default async function CartPage() {
       <main className="structureFlex basicFlexVertical">
         <h1 className="bottomGap cartPaddingGlobal">Cart</h1>
         <section className="basicFlex cartPaddingGlobal basicFlexVertical bottomGapHalf">
-          {productsInCart!.map((productInCart) => {
+          {productsInCart.map((productInCart) => {
             return (
               <div
                 key={`product-${productInCart.id}`}
                 data-test-id={`cart-product-${productInCart.id}>`}
               >
                 <CurrentItem
-                  id={productInCart.id || 0}
-                  name={productInCart.name || ''}
-                  price={productInCart.price || 0}
-                  totalQuantity={productInCart.totalQuantity || 0}
+                  id={productInCart.id}
+                  name={productInCart.name}
+                  price={productInCart.price}
+                  totalQuantity={productInCart.totalQuantity}
                 />
               </div>
             );
@@ -131,7 +73,7 @@ export default async function CartPage() {
           <p>Total price:</p>
           <div>
             <span data-test-id="cart-total" className="boldParagraph pTitle">
-              {calculateTotal(productsInCart)}
+              {totalSum(productsInCart)}
             </span>
             <span className="superScript">€</span>
           </div>

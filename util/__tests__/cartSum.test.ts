@@ -1,5 +1,6 @@
 import { expect, test } from '@jest/globals';
-import { calculateTotal, ProductWithQuantity } from '../../app/cart/page';
+import { ProductWithQuantity } from '../../app/cart/page';
+import { totalSum } from '../../functions/totalsum';
 
 test('Test cart sum function', () => {
   const testObjectArray: ProductWithQuantity[] = [
@@ -20,6 +21,6 @@ test('Test cart sum function', () => {
       totalQuantity: 3,
     },
   ];
-  const sum = calculateTotal(testObjectArray);
+  const sum = totalSum(testObjectArray);
   expect(sum).toBe(8000);
 });

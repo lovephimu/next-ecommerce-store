@@ -7,10 +7,10 @@ type Props = {
 
 export default function AddToCartButton(props: Props) {
   return (
-    <form>
+    <form className="basicFlex">
       <button
         // type="button"
-        className="basicFlex basicFlexJustifyCenter basicFlexAlignCenter cartButton checkOut"
+        className="contentFlex basicFlexJustifyCenter basicFlexAlignCenter cartButton checkOut"
         data-test-id="product-add-to-cart"
         formAction={async () => {
           await updateProductQuantity(props.productId, props.quantity);

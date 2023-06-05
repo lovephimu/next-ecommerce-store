@@ -68,7 +68,7 @@ export default function CheckOutForm() {
   // }
 
   return (
-    <main className="structureFlex">
+    <main className="contentFlex widthWideMode">
       <form className="basicFlex basicFlexVertical">
         <h3 className="bottomPaddingHalf">Shipping</h3>
         <section className="bottomGapHalf">
@@ -232,7 +232,7 @@ export default function CheckOutForm() {
             type="button"
             data-test-id="checkout-confirm-order"
             disabled={activeButton}
-            className="basicFlex basicFlexJustifyCenter basicFlexAlignCenter cartButton checkOut"
+            className="contentFlex basicFlexJustifyCenter basicFlexAlignCenter cartButton checkOut"
             onClick={() => {
               router.push('/cart/checkout/thankyou');
               router.refresh();

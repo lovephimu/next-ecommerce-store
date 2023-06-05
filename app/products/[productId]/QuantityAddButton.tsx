@@ -27,7 +27,7 @@ export default function QuantityAddButton(props: Props) {
 
   return (
     <>
-      <section className="basicFlex cartSpaceBetween bottomGap basicFlexAlignCenter">
+      <section className="contentFlex cartSpaceBetween bottomGap basicFlexAlignCenter justWidth">
         <div>
           <span data-test-id="product-price" className="pTitle boldParagraph">
             {props.productPrice}
@@ -63,7 +63,7 @@ export default function QuantityAddButton(props: Props) {
           </button>
         </div>
       </section>
-      <section className="bottomGap">
+      <section className="basicFlex bottomGap">
         <AddToCartButton
           productId={props.productId}
           quantity={Number(quantity)}

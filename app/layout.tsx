@@ -39,7 +39,11 @@ export default function RootLayout({ children }: PropsWithChildren) {
                 Products
               </Link>
               <div className={styles.menuCart}>
-                <Link href={{ pathname: '/cart' }} className={styles.menuCart}>
+                <Link
+                  href={{ pathname: '/cart' }}
+                  className={styles.menuCart}
+                  data-test-id="cart-link"
+                >
                   <Image
                     src="/images/Icon_Cart.svg"
                     width={32}

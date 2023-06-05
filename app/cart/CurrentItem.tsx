@@ -11,7 +11,7 @@ type Props = {
   id: number;
   name: string;
   price: number;
-  totalQuantity: number;
+  totalQuantity: number | undefined;
 };
 
 export default function CurrentItem(props: Props) {
@@ -44,7 +44,7 @@ export default function CurrentItem(props: Props) {
                   {props.name}
                 </h3>
                 <div className="justFlex    basicFlexJustifyContentRight boldParagraph basicAlignBottom">
-                  {props.price * currentQuantity}€
+                  {props.price * currentQuantity!}€
                 </div>
               </div>
               <p className="">
@@ -68,7 +68,7 @@ export default function CurrentItem(props: Props) {
                   <button
                     className="cartButton"
                     formAction={async () => {
-                      if (props.totalQuantity > 1) {
+                      if (props.totalQuantity! > 1) {
                         await updateProductQuantity(props.id, -1);
                         await downloadCookieQuantity(props.id);
                       }

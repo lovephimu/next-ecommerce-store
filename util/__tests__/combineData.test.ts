@@ -1,7 +1,31 @@
 import { expect, test } from '@jest/globals';
-import { combineProductQuantity } from '../../app/cart/page';
+import { combineData } from '../../functions/combineData';
 
-test('Test function that combines the product data', async () => {
+test('Test function that combines the product data', () => {
+  const testProducts = [
+    {
+      id: 1,
+      name: 'yesChillax',
+      size: 'verySmall',
+      price: 1000,
+      description: 'test',
+    },
+    {
+      id: 2,
+      name: 'yesHoney',
+      size: 'small',
+      price: 2000,
+      description: 'test',
+    },
+    {
+      id: 3,
+      name: 'yesHoney',
+      size: 'small',
+      price: 2000,
+      description: 'test',
+    },
+  ];
+
   const testCookieData = [
     {
       id: 1,
@@ -12,24 +36,24 @@ test('Test function that combines the product data', async () => {
       totalQuantity: 6,
     },
   ];
-  const combinedProducts = await combineProductQuantity(testCookieData);
+  const combinedProducts = combineData(testProducts, testCookieData);
 
   expect(combinedProducts).toStrictEqual([
     {
-      id: combinedProducts?.[0]?.id ?? 0,
-      name: combinedProducts?.[0]?.name ?? '',
-      size: combinedProducts?.[0]?.size ?? '',
-      price: combinedProducts?.[0]?.price ?? 0,
-      description: combinedProducts?.[0]?.description ?? '',
-      totalQuantity: combinedProducts?.[0]?.totalQuantity ?? 0,
+      id: 1,
+      name: 'yesChillax',
+      size: 'verySmall',
+      price: 1000,
+      description: 'test',
+      totalQuantity: 5,
     },
     {
-      id: combinedProducts?.[1]?.id,
-      name: combinedProducts?.[1]?.name ?? '',
-      size: combinedProducts?.[1]?.size ?? '',
-      price: combinedProducts?.[1]?.price ?? 0,
-      description: combinedProducts?.[1]?.description ?? '',
-      totalQuantity: combinedProducts?.[1]?.totalQuantity ?? 0,
+      id: 2,
+      name: 'yesHoney',
+      size: 'small',
+      price: 2000,
+      description: 'test',
+      totalQuantity: 6,
     },
   ]);
 });

@@ -16,6 +16,7 @@
   --globalMargin: 40px;
   --cartDetailPadding: 12px;
   --productButtonSize: 50px;
+  --wideModeMargin: 80px;
 
   --linkHoverColor: #ed6a5a;
 }
@@ -114,6 +115,9 @@ header {
   flex: auto;
 }
 
+.basicFlexAlignTop {
+  align-self: flex-start;
+}
 .basicFlexAlignCenter {
   align-items: center;
 }
@@ -129,6 +133,10 @@ header {
 
 .basicFlexJustifyCenter {
   justify-content: center;
+}
+
+.basicFlexJustifyLeft {
+  justify-content: left;
 }
 
 .basicGap {
@@ -153,6 +161,21 @@ header {
 }
 
 .widthWideMode {
+  width: 100%;
+}
+
+.productFlexDirection {
+  flex-direction: column;
+  align-items: flex-start;
+}
+.checkOutFlexDirection {
+  flex-direction: column;
+}
+
+.checkoutSummaryBox {
+  border: 1px var(--backgroundColorYar) dotted;
+  box-sizing: border-box;
+  padding: 16px;
   width: 100%;
 }
 
@@ -276,10 +299,17 @@ header {
 // Texts
 
 a {
-  color: var(--backgroundColorFooter);
+  color: var(--textColor);
   z-index: 1;
   text-decoration: underline;
-  text-decoration-skip-ink: none;
+  text-decoration-color: var(--backgroundColorYass);
+  text-decoration-skip-ink: all;
+  transition: text-decoration-color 0.3s ease, color 0.3s ease;
+  border-radius: 4px;
+}
+
+a:hover {
+  text-decoration-color: var(--linkHoverColor);
 }
 
 li {
@@ -363,7 +393,7 @@ footer {
 .productImage {
   width: 100%;
   height: auto;
-  max-width: 600px;
+  max-width: 450px;
   z-index: -2;
 }
 
@@ -387,11 +417,13 @@ footer {
   header {
     width: 100%;
     box-sizing: border-box;
-    padding: 0 var(--globalMargin) 0 var(--globalMargin);
+    padding: 16px var(--wideModeMargin) 0 var(--wideModeMargin);
+    position: fixed;
   }
 
   .content {
     width: 100%;
+    margin-top: 160px;
   }
 
   .structureFlex {
@@ -413,6 +445,29 @@ footer {
   }
 
   .widthWideMode {
-    width: 1000px;
+    width: 60%;
+  }
+
+  .checkOutFlexDirection {
+    flex-direction: row-reverse;
+    justify-content: left;
+  }
+
+  .checkoutSummaryBox {
+    margin-left: 40px;
+    width: 40%;
+    align-items: flex-start;
+  }
+
+  .checkOut {
+    width: 50%;
+  }
+
+  .cartPaddingGlobal {
+    padding: 0 var(--wideModeMargin) 0 var(--wideModeMargin);
+  }
+
+  .productFlexDirection {
+    flex-direction: column;
   }
 }

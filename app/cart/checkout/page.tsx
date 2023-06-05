@@ -39,8 +39,13 @@ export default async function CheckOutPage() {
     <main className="structureFlex">
       <section className="basicFlex basicFlexVertical  cartPaddingGlobal">
         <h1 className="bottomGap">Check Out For Real</h1>
-        <p className="bottomGapHalf">Order summary: {calculateTotal()}€</p>
-        <CheckOutForm />
+        <div className="contentFlex checkOutFlexDirection">
+          <div className="contentFlex basicFlexVertical basicFlexAlignTop bottomGapHalf checkoutSummaryBox">
+            <h3 className="bottomGapHalf">Order summary:</h3>
+            <p>{calculateTotal()}€</p>
+          </div>
+          <CheckOutForm />
+        </div>
       </section>
     </main>
   );
