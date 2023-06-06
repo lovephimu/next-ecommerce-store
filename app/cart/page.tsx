@@ -7,10 +7,10 @@ import CurrentItem from './CurrentItem';
 
 export const dynamic = 'force-dynamic';
 
-// export const metadata = {
-//   title: 'yesTent - cart',
-//   description: 'Product cart',
-// };
+export const metadata = {
+  title: 'yesTent - cart',
+  description: 'Product cart',
+};
 
 export type ParsedCookie = {
   id: number;
