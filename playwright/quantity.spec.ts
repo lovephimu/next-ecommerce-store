@@ -8,7 +8,7 @@ test('quantity manipulation test', async ({ page }) => {
   await expect(page).toHaveURL('http://localhost:3000/products');
 
   await page.getByRole('link', { name: 'yesChillax' }).click();
-  await page.waitForURL('**/1');
+  await expect(page).toHaveURL('http://localhost:3000/products/1');
 
   const defaultQuantity = await page
     .getByTestId('product-quantity')
@@ -32,7 +32,8 @@ test('quantity manipulation test', async ({ page }) => {
 
   await expect(page.getByTestId('cart-product-quantity-1')).toBeVisible;
 
-  // await expect(page.getByTestId('cart-product-quantity-1')).toHaveText(/1/);
+  await page.waitForTimeout(6000);
+
   await page.getByTestId('cart-product-remove-1').click();
   await expect(page.getByTestId('cart-product-quantity-1')).not.toBeVisible;
 });
