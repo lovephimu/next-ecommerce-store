@@ -92,6 +92,37 @@ header {
   box-sizing: border-box;
 }
 
+.listFlex {
+  display: flex;
+  flex-direction: column;
+  // flex-wrap: wrap;
+  gap: 12px;
+  // justify-content: space-between;
+}
+.listFlexItem {
+  // /* Set styles for each flex item */
+  // /* For example: */
+  // flex: 1 0 auto;
+  border: 1px var(--backgroundColorFooter) dotted;
+  border-radius: 4px;
+  // max-width: 500px;
+  padding: 40px 0 40px 0;
+}
+
+.productFlex {
+  display: flex;
+  width: 100%;
+}
+
+.productFlexItem {
+  display: flex;
+  background-color: #f2f2f237;
+}
+
+.productSiteFlexDirection {
+  flex-direction: column;
+}
+
 .basicFlex {
   display: flex;
   width: 100%;
@@ -469,5 +500,30 @@ footer {
 
   .productFlexDirection {
     flex-direction: column;
+  }
+
+  .productFlex {
+    width: 40%;
+  }
+
+  .productSiteFlexDirection {
+    flex-direction: row;
+  }
+
+  .listFlex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: space-between;
+    flex-direction: row;
+  }
+  .listFlexItem {
+    /* Set styles for each flex item */
+    /* For example: */
+    flex: 1 0 auto;
+    border: 1px var(--backgroundColorFooter) dotted;
+    border-radius: 4px;
+    max-width: 500px;
+    padding: 40px 0 40px 0;
   }
 }
