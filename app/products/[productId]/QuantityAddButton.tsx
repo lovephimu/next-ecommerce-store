@@ -26,49 +26,45 @@ export default function QuantityAddButton(props: Props) {
   }
 
   return (
-    <>
-      <section className="contentFlex cartSpaceBetween bottomGap basicFlexAlignCenter justWidth">
-        <div>
-          <span data-test-id="product-price" className="pTitle boldParagraph">
-            {props.productPrice}
-          </span>
-          <span className="superScript">€</span>
-        </div>
-        <div className="productJustify">
-          <button
-            className="productButton"
-            onClick={() => {
-              decreaseQuantity();
-            }}
-          >
-            -
-          </button>
-          <input
-            className="productInput"
-            data-test-id="product-quantity"
-            value={quantity}
-            onChange={(event) => {
-              Number(event.currentTarget.value) >= 0
-                ? setQuantity(Number(event.currentTarget.value))
-                : setQuantity(1);
-            }}
-          />
-          <button
-            className="productButton"
-            onClick={() => {
-              increaseQuantity();
-            }}
-          >
-            +
-          </button>
-        </div>
-      </section>
-      <section className="basicFlex bottomGap">
+    <section className="listFlexItem listWidthSmall bottomGap">
+      <div>
+        <span data-test-id="product-price" className="pTitle boldParagraph">
+          {props.productPrice}
+        </span>
+        <span className="superScript">€</span>
+      </div>
+      <div className="productJustify">
+        <button
+          className="productButton"
+          onClick={() => {
+            decreaseQuantity();
+          }}
+        >
+          -
+        </button>
+        <input
+          className="productInput"
+          data-test-id="product-quantity"
+          value={quantity}
+          onChange={(event) => {
+            Number(event.currentTarget.value) >= 0
+              ? setQuantity(Number(event.currentTarget.value))
+              : setQuantity(1);
+          }}
+        />
+        <button
+          className="productButton"
+          onClick={() => {
+            increaseQuantity();
+          }}
+        >
+          +
+        </button>
         <AddToCartButton
           productId={props.productId}
           quantity={Number(quantity)}
         />
-      </section>
-    </>
+      </div>
+    </section>
   );
 }

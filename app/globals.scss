@@ -8,6 +8,7 @@
   --textColor: #f2e2d2;
   --backgroundColorYes: #317e94;
   --backgroundColorYass: #226d82;
+  --backgroundColorDark: #1b5b6c;
   --backgroundColorYar: #195d70;
   --backgroundColorFooter: #0e3641;
   --backgroundColorGrey: #efefef;
@@ -54,11 +55,14 @@ section {
 
 header {
   margin: 40px;
+  z-index: 3;
 }
 
 .landingSection {
   width: 100%;
   height: var(--landingSectionHeight);
+  color: var(--backgroundColorDark);
+  margin-bottom: 8px;
 }
 
 .landingYesHoney {
@@ -106,7 +110,7 @@ header {
   border: 1px var(--backgroundColorFooter) dotted;
   border-radius: 4px;
   // max-width: 500px;
-  padding: 40px 0 40px 0;
+  padding: 40px 0 0 0;
 }
 
 .productFlex {
@@ -149,6 +153,11 @@ header {
 .basicFlexAlignTop {
   align-self: flex-start;
 }
+
+.basicFlexAlignTopNext {
+  justify-content: right;
+}
+
 .basicFlexAlignCenter {
   align-items: center;
 }
@@ -334,13 +343,32 @@ a {
   z-index: 1;
   text-decoration: underline;
   text-decoration-color: var(--backgroundColorYass);
-  text-decoration-skip-ink: all;
+  text-decoration-skip-ink: none;
   transition: text-decoration-color 0.3s ease, color 0.3s ease;
   border-radius: 4px;
+  text-decoration-thickness: 4px;
+}
+
+a.productSite {
+  text-decoration-color: var(--backgroundColorDark);
 }
 
 a:hover {
   text-decoration-color: var(--linkHoverColor);
+}
+
+.landingSection a {
+  color: var(--backgroundColorDark);
+}
+
+.imageSaturation {
+  filter: grayscale(100%) saturate(0%);
+  transition: filter 0.5s ease 0.5s;
+}
+
+.imageSaturation:hover {
+  filter: grayscale(0%) saturate(100%);
+  transition-delay: 0s;
 }
 
 li {
@@ -381,6 +409,28 @@ p {
   padding-bottom: calc(var(--globalMargin) / 4);
 }
 
+.backProduct {
+  background-color: var(--backgroundColorYes);
+  margin-top: 16px;
+  padding-bottom: 4px;
+}
+
+.backProductDark {
+  background-color: var(--backgroundColorYass);
+  padding: 16px 0 16px 0;
+}
+
+// .filterCartIcon {
+//   filter: invert(94%) sepia(3%) saturate(1258%) hue-rotate(338deg)
+//     brightness(99%) contrast(91%);
+//   transition: filter 0.3s ease;
+// }
+
+// .filterCartIcon:hover {
+//   filter: invert(55%) sepia(21%) saturate(4179%) hue-rotate(326deg)
+//     brightness(99%) contrast(87%);
+// }
+
 h1,
 h2 {
   padding-top: var(--globalMargin);
@@ -398,7 +448,7 @@ h3 {
   position: relative;
   top: 65%;
   padding-left: var(--globalMargin);
-  text-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
 }
 
 .topPadding {
@@ -410,6 +460,7 @@ footer {
   padding: var(--globalMargin);
   box-sizing: border-box;
   background-color: var(--backgroundColorFooter);
+  width: 100%;
 }
 
 .productNav {
@@ -424,7 +475,7 @@ footer {
 .productImage {
   width: 100%;
   height: auto;
-  max-width: 450px;
+  max-width: 600px;
   z-index: -2;
 }
 
@@ -452,6 +503,12 @@ footer {
     position: fixed;
   }
 
+  footer {
+    padding: var(--globalMargin) var(--wideModeMargin) var(--globalMargin)
+      var(--wideModeMargin);
+    box-sizing: border-box;
+  }
+
   .content {
     width: 100%;
     margin-top: 160px;
@@ -466,10 +523,6 @@ footer {
     flex-shrink: 0;
   }
 
-  footer {
-    width: 100%;
-  }
-
   .landingYesHoney {
     min-height: 1000px;
     max-height: none;
@@ -477,6 +530,19 @@ footer {
 
   .widthWideMode {
     width: 60%;
+  }
+
+  .landingTitle {
+    font-size: 5em;
+  }
+
+  .pTitle {
+    font-size: 3em;
+  }
+
+  .pSubTitle {
+    font-size: 2em;
+    text-decoration-thickness: 10px;
   }
 
   .checkOutFlexDirection {
@@ -499,11 +565,11 @@ footer {
   }
 
   .productFlexDirection {
-    flex-direction: column;
+    flex-direction: row;
   }
 
   .productFlex {
-    width: 40%;
+    width: 30%;
   }
 
   .productSiteFlexDirection {
@@ -524,6 +590,21 @@ footer {
     border: 1px var(--backgroundColorFooter) dotted;
     border-radius: 4px;
     max-width: 500px;
-    padding: 40px 0 40px 0;
+    padding: 40px 0 0 0;
+  }
+
+  .listWidthBig {
+    width: 40%;
+  }
+  .listWidthSmall {
+    width: 20%;
+  }
+
+  .listStructureWidth {
+    width: 100%;
+  }
+
+  .listMaxHeight {
+    height: 500px;
   }
 }

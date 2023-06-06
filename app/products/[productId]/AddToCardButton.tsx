@@ -7,7 +7,7 @@ type Props = {
 
 export default function AddToCartButton(props: Props) {
   return (
-    <form className="basicFlex">
+    <form className="basicFlex ">
       <button
         // type="button"
         className="contentFlex basicFlexJustifyCenter basicFlexAlignCenter cartButton checkOut"

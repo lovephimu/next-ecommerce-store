@@ -28,21 +28,26 @@ export default async function ProductPage(props: Props) {
 
   return (
     <main className="structureFlex ">
-      <div className="contentFlex cartPaddingGlobal productFlexDirection widthWideMode">
-        <p className="productNav bottomGap">
-          <Link href={{ pathname: '/products' }}>⬅ Return to Products</Link>
+      <div className="listFlex cartPaddingGlobal listStructureWidth">
+        <div className="basicFlex basicFlexVertical">
+          {/* <p className="productNav">
+            <Link href={{ pathname: '/products' }}>⬅ Return to Products</Link>
+          </p> */}
+          <h1 className="bottomGap">{singleProduct.name}</h1>
+        </div>
+        <div className="listItemFlex listWidthBig listMaxHeight">
+          <Image
+            data-test-id="product-image"
+            src={`/images/${singleProduct.name}_product.png`}
+            width={500}
+            height={500}
+            alt="Product pic"
+          />
+          <div>{singleProduct.size}</div>
+        </div>
+        <p className="listFlexItem listWidthBig listMaxHeight bottomGap">
+          {singleProduct.description}
         </p>
-        <h1 className="productTitle bottomGap">{singleProduct.name}</h1>
-        <Image
-          data-test-id="product-image"
-          className="productImage"
-          src={`/images/${singleProduct.name}_product.png`}
-          width={200}
-          height={200}
-          alt="Product pic"
-        />
-        <div>{singleProduct.size}</div>
-        <p className="bottomGap">{singleProduct.description}</p>
 
         <QuantityAddButton
           productId={Number(singleProduct.id)}

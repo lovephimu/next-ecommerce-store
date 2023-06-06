@@ -46,9 +46,10 @@ export default function RootLayout({ children }: PropsWithChildren) {
                 >
                   <Image
                     src="/images/Icon_Cart.svg"
-                    width={32}
-                    height={32}
+                    width={40}
+                    height={40}
                     alt="cart svg"
+                    className="filterCartIcon"
                   />
                   <Count />
                 </Link>

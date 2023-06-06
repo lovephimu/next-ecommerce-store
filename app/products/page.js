@@ -14,23 +14,29 @@ export default async function ProductsPage() {
   return (
     <main className="structureFlex basicFlexVertical cartPaddingGlobal bottomGap">
       <h1 className="bottomGap">Our products:</h1>
-      {/* evtl grid hier */}
       <section className="listFlex">
         {products.map((product) => {
           return (
             <div key={`product-div-${product.id}`} className="listFlexItem">
-              <div className="contentFlex basicFlexVertical bottomPaddingHalf">
-                <img
-                  src={`/images/${product.name}_product_sm.jpg`}
+              <div className="contentFlex basicFlexVertical">
+                <Image
+                  src={`/images/${product.name}_product_sm.png`}
                   alt="Product pic"
+                  width={300}
+                  height={300}
                 />
-                <Link
-                  data-test-id={`product-${product.id}`}
-                  href={`/products/${product.id}`}
-                >
-                  <h1 className="bottomPadding">{product.name}</h1>
-                </Link>
-                <p>{product.description}</p>
+                <div className="basicFlex basicFlexVertical backProduct basicFlexAlignCenter">
+                  <Link
+                    data-test-id={`product-${product.id}`}
+                    href={`/products/${product.id}`}
+                    className="productSite"
+                  >
+                    <h1 className="bottomGapHalf">{product.name}</h1>
+                  </Link>
+                </div>
+                <p className="basicFlex basicFlexJustifyCenter backProductDark">
+                  {product.size}
+                </p>
               </div>
             </div>
           );
