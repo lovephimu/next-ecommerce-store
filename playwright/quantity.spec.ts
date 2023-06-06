@@ -31,6 +31,7 @@ test('quantity manipulation test', async ({ page }) => {
   await expect(page).toHaveURL('http://localhost:3000/cart');
 
   await expect(page.getByTestId('cart-product-quantity-1')).toBeVisible;
+  await expect(page.getByTestId('cart-product-remove-1')).toBeVisible;
 
   // await page.waitForTimeout(6000);
 
