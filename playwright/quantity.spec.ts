@@ -35,6 +35,6 @@ test('quantity manipulation test', async ({ page }) => {
 
   // await page.waitForTimeout(6000);
 
-  // await page.getByTestId('cart-product-remove-1').click();
+  await page.getByTestId('cart-product-remove-1').click();
   // await expect(page.getByTestId('cart-product-quantity-1')).not.toBeVisible;
 });
