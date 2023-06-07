@@ -33,8 +33,10 @@ test('quantity manipulation test', async ({ page }) => {
   await expect(page.getByTestId('cart-product-quantity-1')).toBeVisible;
   await expect(page.getByTestId('cart-product-remove-1')).toBeVisible;
 
-  // await page.waitForTimeout(6000);
+  await expect(page.getByRole('button', { name: 'x' })).toBeVisible;
+  await page.getByRole('button', { name: 'x' }).click();
 
-  await page.getByTestId('cart-product-remove-1').click();
-  // await expect(page.getByTestId('cart-product-quantity-1')).not.toBeVisible;
+  // await page.getByTestId('cart-product-remove-1').click();
 });
+// await page.waitForTimeout(6000);
+// await expect(page.getByTestId('cart-product-quantity-1')).not.toBeVisible;
