@@ -8,7 +8,7 @@ export default function HomePage() {
         <section className="landingSection landingYesHoney">
           <div className="positionTitle">
             <h1 className="landingTitle">yesHoney ♡</h1>
-            <p className="pTitle">Just you, your partner and Mother Nature</p>
+            <p className="pTitle">You, your boo and Mother Nature</p>
             <p className="pSubTitle">(...or mother bear 🐻)</p>
             <Link href="/products/1" className="pSubTitle">
               learn more...
@@ -19,7 +19,7 @@ export default function HomePage() {
           <div className="positionTitle">
             <h1 className="landingTitle">yesChillax</h1>
             <p className="pTitle">
-              The House you always wanted - with yesTent™ fabric for walls!
+              The House you always wanted - with fabric for walls!
             </p>
             <p className="pSubTitle">
               (load-bearing walls are overrated anyway)
@@ -32,9 +32,7 @@ export default function HomePage() {
         <section className="landingSection landingYesHoney landingYesRave ">
           <div className="positionTitle">
             <h1 className="landingTitle">yesRave</h1>
-            <p className="pTitle">
-              Mobility, friends and party - all in one tent.
-            </p>
+            <p className="pTitle">It has a dance floor.</p>
             <p className="pSubTitle">(DJ not included)</p>
             <Link href="/products/3" className="pSubTitle">
               learn more...
