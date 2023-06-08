@@ -12,7 +12,7 @@ export default function AddToCartButton(props: Props) {
     <form className="basicFlex ">
       <button
         // type="button"
-        className="contentFlex basicFlexJustifyCenter basicFlexAlignCenter cartButton checkOut"
+        className="contentFlex basicFlexJustifyCenter basicFlexAlignCenter cartButton addToCart"
         data-test-id="product-add-to-cart"
         formAction={async () => {
           await updateProductQuantity(props.productId, props.quantity);

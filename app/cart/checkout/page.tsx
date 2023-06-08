@@ -1,4 +1,6 @@
-import { getNamePriceById } from '../../../database/products';
+import { getProducts } from '../../../database/products';
+import { combineData } from '../../../functions/combineData';
+import { totalSum } from '../../../functions/totalsum';
 import { getCurrentProducts } from '../actions';
 import CheckOutForm from './CheckOutForm';
 
@@ -10,41 +12,18 @@ export const metadata = {
 };
 
 export default async function CheckOutPage() {
-  type ParsedCookie = {
-    id: number;
-    totalQuantity: number;
-  };
-
   const productsInCookie = await getCurrentProducts();
 
-  const productNamePrices = await Promise.all(
-    productsInCookie.map(async (product: ParsedCookie) => {
-      const matchingProduct = await getNamePriceById(Number(product.id));
+  const allProducts = await getProducts();
 
-      return {
-        ...matchingProduct,
-        totalQuantity: product.totalQuantity,
-      };
-    }),
-  );
-
-  function calculateTotal() {
-    return productNamePrices.reduce(
-      (total, item) => total + item.totalQuantity * item.price,
-      0,
-    );
-  }
+  const productsInArray = combineData(allProducts, productsInCookie);
 
   return (
     <main className="structureFlex">
-      <section className="basicFlex basicFlexVertical  cartPaddingGlobal">
-        <h1 className="bottomGap">Check Out For Real</h1>
-        <div className="contentFlex checkOutFlexDirection">
-          <div className="contentFlex basicFlexVertical basicFlexAlignTop bottomGapHalf checkoutSummaryBox">
-            <h3 className="bottomGapHalf">Order summary:</h3>
-            <p>{calculateTotal()}€</p>
-          </div>
-          <CheckOutForm />
+      <section className="basicFlex basicFlexVertical cartPaddingGlobal">
+        <h1>Check Out</h1>
+        <div className="basicFlex">
+          <CheckOutForm totalSum={totalSum(productsInArray)} />
         </div>
       </section>
     </main>

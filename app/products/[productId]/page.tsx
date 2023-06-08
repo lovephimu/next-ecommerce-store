@@ -34,7 +34,7 @@ export default async function ProductPage(props: Props) {
           </p> */}
           <h1 className="bottomGap">{singleProduct.name}</h1>
         </div>
-        <div className="listItemFlex listWidthBig listMaxHeight">
+        <div className="listItemFlex listWidthPicture">
           <Image
             data-test-id="product-image"
             src={`/images/${singleProduct.name}_product.png`}
@@ -42,11 +42,24 @@ export default async function ProductPage(props: Props) {
             height={400}
             alt="Product pic"
           />
-          <div>{singleProduct.size}</div>
         </div>
-        <p className="listFlexItem listWidthBig listMaxHeight bottomGap">
-          {singleProduct.description}
-        </p>
+        <div className="listFlexItem listWidthBig contentFlexPadding bottomGap">
+          <p className="description bottomPaddingHalf">{singleProduct.size}</p>
+          <div>
+            {singleProduct.description
+              ?.split('\n\n')
+              .map((paragraph, index) => {
+                return (
+                  <div
+                    key={`paragraph-${paragraph[index]}`}
+                    className="bottomPaddingHalf"
+                  >
+                    {paragraph}
+                  </div>
+                );
+              })}
+          </div>
+        </div>
 
         <QuantityAddButton
           productId={Number(singleProduct.id)}

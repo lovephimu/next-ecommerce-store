@@ -13,7 +13,7 @@ export default async function ProductsPage() {
   const products = await getProducts();
   return (
     <main className="structureFlex basicFlexVertical cartPaddingGlobal bottomGap">
-      <h1 className="bottomGap">Our products:</h1>
+      <h1 className="bottomGap">Our products</h1>
       <section className="listFlex">
         {products.map((product) => {
           return (

@@ -52,41 +52,66 @@ export default async function CartPage() {
     return (
       <main className="structureFlex basicFlexVertical">
         <h1 className="bottomGap cartPaddingGlobal">Cart</h1>
-        <section className="basicFlex cartPaddingGlobal basicFlexVertical bottomGapHalf">
-          {productsInCart.map((productInCart) => {
-            return (
-              <div
-                key={`product-${productInCart.id}`}
-                data-test-id={`cart-product-${productInCart.id}>`}
-              >
-                <CurrentItem
-                  id={productInCart.id}
-                  name={productInCart.name}
-                  price={productInCart.price}
-                  totalQuantity={productInCart.totalQuantity}
-                />
+        <section className="cartFlex cartPaddingGlobal">
+          <section className="cartFlexItem cartListGrow basicFlexVertical bottomGapHalf">
+            {productsInCart.map((productInCart) => {
+              return (
+                <div
+                  key={`product-${productInCart.id}`}
+                  data-test-id={`cart-product-${productInCart.id}>`}
+                >
+                  <CurrentItem
+                    id={productInCart.id}
+                    name={productInCart.name}
+                    price={productInCart.price}
+                    totalQuantity={productInCart.totalQuantity}
+                  />
+                </div>
+              );
+            })}
+            <div className="basicFlex cartSpaceBetween bottomGapHalf">
+              <p>Total price:</p>
+              <div>
+                <span
+                  data-test-id="cart-total"
+                  className="boldParagraph pTitle"
+                >
+                  {totalSum(productsInCart)}
+                </span>
+                <span className="superScript">€</span>
               </div>
-            );
-          })}
-        </section>
-        <div className="basicFlex cartSpaceBetween cartPaddingGlobal bottomGapHalf">
-          <p>Total price:</p>
-          <div>
-            <span data-test-id="cart-total" className="boldParagraph pTitle">
-              {totalSum(productsInCart)}
-            </span>
-            <span className="superScript">€</span>
+            </div>
+          </section>
+          <div className="cartFlexItem cartFlexPadding bottomGap cartProgressBorder">
+            <p className="bottomPaddingHalf">Almost there! </p>
+            <p className="subTitle">Two steps remaining:</p>
+            <div className="basicFlex basicFlexAlignBottom cartBoxHeight cartSpaceBetween">
+              <div className="contentFlex basicFlexAlignEnd">
+                <p>▲</p>
+                <p>Choice</p>
+              </div>
+              <div className="contentFlex basicFlexAlignEnd">
+                <p>△</p>
+                <p>Checkout</p>
+              </div>
+              <div className="contentFlex basicFlexAlignEnd">
+                <p>△</p>
+                <p>Confirmation</p>
+              </div>
+            </div>
+            <div className="basicFlex cartSpaceBetween bottomGap">
+              <div className="halfFlex basicWidthTwenty" />
+              <div className="halfFlexDark widthEighty" />
+            </div>
+            <a
+              data-test-id="cart-checkout"
+              href="/cart/checkout"
+              className="basicFlex basicFlexJustifyCenter basicFlexAlignCenter cartButton cartOut"
+            >
+              Proceed to Checkout
+            </a>
           </div>
-        </div>
-        <div className="basicFlex cartPaddingGlobal bottomGap">
-          <a
-            data-test-id="cart-checkout"
-            href="/cart/checkout"
-            className="basicFlex basicFlexJustifyCenter basicFlexAlignCenter cartButton checkOut"
-          >
-            Proceed to Checkout
-          </a>
-        </div>
+        </section>
       </main>
     );
   }

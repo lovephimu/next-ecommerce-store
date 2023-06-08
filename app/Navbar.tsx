@@ -43,7 +43,13 @@ export default function NavBar() {
           </Link>
           <div className={styles.navFlexItem}>
             <div className={styles.menu}>
-              <span className={styles.menuButton}>Menu</span>
+              <Image
+                className={`${styles.menuButton} ${styles.menuCart}`}
+                src="/images/Icon_BurgerMenu.svg"
+                alt="menu button"
+                width={32}
+                height={32}
+              />
               <ul className={styles.navList}>
                 <li>
                   <Link
