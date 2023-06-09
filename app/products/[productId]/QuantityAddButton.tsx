@@ -1,7 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
+import addPositiveQuantity from '../../../functions/addPositiveQuantity';
 import AddToCartButton from './AddToCardButton';
 
 // import { updateProductQuantity } from './actions';
@@ -20,8 +21,8 @@ export default function QuantityAddButton(props: Props) {
   }
 
   function decreaseQuantity() {
-    if (quantity <= 1) {
-      return;
+    if (quantity <= 1 || typeof quantity !== 'number') {
+      return NaN;
     }
     setQuantity(quantity - 1);
   }
@@ -82,14 +83,16 @@ export default function QuantityAddButton(props: Props) {
           -
         </button>
         <input
-          className="productInput"
-          data-test-id="product-quantity"
           value={quantity}
-          onChange={(event) => {
-            Number(event.currentTarget.value) >= 0
-              ? setQuantity(Number(event.currentTarget.value))
-              : setQuantity(1);
-          }}
+          type="number"
+          className="productInput"
+          min="1"
+          data-test-id="product-quantity"
+          onChange={(event: ChangeEvent<HTMLInputElement>) =>
+            setQuantity(
+              addPositiveQuantity(parseInt(event.currentTarget.value)),
+            )
+          }
         />
         <button
           className="productButton"

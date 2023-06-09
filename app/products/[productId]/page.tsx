@@ -36,6 +36,8 @@ export default async function ProductPage(props: Props) {
         </div>
         <div className="listItemFlex listWidthPicture">
           <Image
+            priority
+            unoptimized
             data-test-id="product-image"
             src={`/images/${singleProduct.name}_product.png`}
             width={400}
