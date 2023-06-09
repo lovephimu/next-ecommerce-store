@@ -32,7 +32,6 @@ export default async function ProductsPage() {
                 </Link>
                 <div className="basicFlex basicFlexVertical backProduct basicFlexAlignCenter">
                   <Link
-                    data-test-id={`product-${product.id}`}
                     href={`/products/${product.id}`}
                     className="productSite"
                   >
