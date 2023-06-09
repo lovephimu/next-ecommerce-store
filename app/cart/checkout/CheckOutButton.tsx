@@ -1,5 +1,5 @@
 import { useRouter } from 'next/navigation';
-import { emptyCookie } from '../../products/[productId]/actions';
+import { emptyCookie } from '../actions';
 
 type Props = {
   activated: boolean;

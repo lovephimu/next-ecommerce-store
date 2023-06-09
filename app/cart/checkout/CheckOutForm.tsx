@@ -2,6 +2,9 @@
 
 import { useRouter } from 'next/navigation';
 import { ChangeEvent, useEffect, useState } from 'react';
+import { emptyCookie } from '../actions';
+
+// import CheckOutButton from './CheckOutButton';
 
 // import CheckOutButton from './CheckOutButton';
 
@@ -242,12 +245,12 @@ export default function CheckOutForm(props: Props) {
               </div>
               <section className="basicFlex">
                 <button
-                  type="button"
                   data-test-id="checkout-confirm-order"
                   disabled={activeButton}
                   className="basicFlex basicFlexJustifyCenter basicFlexAlignCenter cartButton cartOut"
-                  onClick={() => {
+                  formAction={async () => {
                     router.push('/cart/checkout/thankyou');
+                    await emptyCookie();
                     router.refresh();
                   }}
                 >

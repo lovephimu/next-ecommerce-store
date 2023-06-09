@@ -1,5 +1,5 @@
 'use server';
-
+import { cookies } from 'next/headers';
 import { getCookie } from '../../util/cookies';
 import { parseJson } from '../../util/json';
 
@@ -22,4 +22,9 @@ export async function getCurrentQuantity(id: number) {
   );
 
   return individualProduct;
+}
+
+export async function emptyCookie() {
+  // @ts-ignore
+  await cookies().set('cart', JSON.stringify([]));
 }

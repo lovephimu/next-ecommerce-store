@@ -19,12 +19,17 @@ export default async function ProductsPage() {
           return (
             <div key={`product-div-${product.id}`} className="listFlexItem">
               <div className="contentFlex basicFlexVertical">
-                <Image
-                  src={`/images/${product.name}_product_sm.png`}
-                  alt="Product pic"
-                  width={300}
-                  height={300}
-                />
+                <Link
+                  data-test-id={`product-${product.id}`}
+                  href={`/products/${product.id}`}
+                >
+                  <Image
+                    src={`/images/${product.name}_product_sm.png`}
+                    alt="Product pic"
+                    width={300}
+                    height={300}
+                  />
+                </Link>
                 <div className="basicFlex basicFlexVertical backProduct basicFlexAlignCenter">
                   <Link
                     data-test-id={`product-${product.id}`}

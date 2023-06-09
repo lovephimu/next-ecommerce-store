@@ -56,9 +56,3 @@ export async function deleteProduct(productId) {
 
   await cookies().set('cart', JSON.stringify(newQuantity));
 }
-
-export async function emptyCookie() {
-  const emptyArray = [];
-
-  await cookies().set('cart', JSON.stringify(emptyArray));
-}
