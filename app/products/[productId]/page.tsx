@@ -29,9 +29,6 @@ export default async function ProductPage(props: Props) {
     <main className="structureFlex ">
       <div className="listFlex cartPaddingGlobal listStructureWidth">
         <div className="basicFlex basicFlexVertical">
-          {/* <p className="productNav">
-            <Link href={{ pathname: '/products' }}>⬅ Return to Products</Link>
-          </p> */}
           <h1 className="bottomGap">{singleProduct.name}</h1>
         </div>
         <div className="listItemFlex listWidthPicture">
@@ -39,7 +36,7 @@ export default async function ProductPage(props: Props) {
             priority
             unoptimized
             data-test-id="product-image"
-            src={`/images/${singleProduct.name}_product.png`}
+            src={`/images/${singleProduct.name}_product.avif`}
             width={400}
             height={400}
             alt="Product pic"
