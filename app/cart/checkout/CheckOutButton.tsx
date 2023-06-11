@@ -17,9 +17,9 @@ export default function CheckOutButton(props: Props) {
           className="basicFlex basicFlexJustifyCenter basicFlexAlignCenter cartButton checkOut"
           data-test-id="checkout-confirm-order"
           formAction={async () => {
-            router.push('/cart/checkout/thankyou');
             await emptyCookie();
             router.refresh();
+            router.push('/cart/checkout/thankyou');
           }}
         >
           Confirm order
