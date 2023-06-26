@@ -55,9 +55,6 @@ yesTent is an ecommerce store built using Next.js, a popular framework for serve
 
    - yesTent utilized digitally hand-drawn images of tents and their usage. These custom illustrations contribute to the unique visual identity of the ecommerce store.
 
-10. Checkout Form
-    - A checkout form component in yesTent serves as an example of using React hooks. It utilizes hooks like useState to manage form state, useEffect to handle form validation, and conditional rendering based on the presence of products in the basket.
-
 ## Conclusion
 
 The yesTent ecommerce store is built using various technologies and techniques to provide a robust and user-friendly shopping experience. By utilizing Next.js, Postgres, migrations, SQL queries, cookies, SCSS modules, Jest, Playwright, TypeScript, Docker, and Fly.io, the application offers seamless navigation, efficient data management, reliable testing, and scalable deployment. The integration of hand-drawn images further enhance the overall user experience.
